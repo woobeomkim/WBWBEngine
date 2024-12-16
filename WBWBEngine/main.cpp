@@ -2,7 +2,9 @@
 //
 
 #include "framework.h"
-#include "WBWBEngine.h"
+#include "Editor_Window.h"
+
+#include "..\\WBWBEngine_Source\\wbApplication.h"
 
 #define MAX_LOADSTRING 100
 
@@ -10,6 +12,8 @@
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
+
+Application app;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -31,7 +35,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_WBWBENGINE, szWindowClass, MAX_LOADSTRING);
     MyRegisterClass(hInstance);
-
+    
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
     {
@@ -40,15 +44,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WBWBENGINE));
 
-    MSG msg;
+    MSG msg = {};
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (msg.message == WM_QUIT) break;
+
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            app.Run();
         }
     }
 
@@ -100,6 +113,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
+   app.Initialize(hWnd);
+
    if (!hWnd)
    {
       return FALSE;
@@ -146,6 +161,27 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            
+           /* HBRUSH blueBrush = CreateSolidBrush(RGB(0, 0, 255));
+
+            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
+            Rectangle(hdc, 200, 200, 300, 300);
+            SelectObject(hdc, oldBrush);
+
+            DeleteObject(blueBrush);
+
+            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+            
+            Ellipse(hdc, 200, 200, 300, 300);
+
+            SelectObject(hdc, oldPen);
+            DeleteObject(redPen);*/
+            
+           /* HBRUSH grayBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
+            oldBrush = (HBRUSH)SelectObject(hdc, grayBrush);
+            Rectangle(hdc, 400, 400, 500, 500);
+            SelectObject(hdc, oldBrush);*/
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
