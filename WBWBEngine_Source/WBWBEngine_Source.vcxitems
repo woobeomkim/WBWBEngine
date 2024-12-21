@@ -16,12 +16,16 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbBullet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbBullet.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp" />
   </ItemGroup>
 </Project>

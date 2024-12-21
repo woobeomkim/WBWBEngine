@@ -3,16 +3,16 @@
 
 namespace wb
 {
-	class GameObject
+	class Monster
 	{
 	public:
-		GameObject();
-		~GameObject();
+		Monster();
+		~Monster();
 
 		void Initialize();
 		void Update();
-		void LateUpdate();
 		void Render(HDC hdc);
+		void LateUpdate();
 
 		void SetPosition(float x, float y)
 		{
@@ -27,7 +27,6 @@ namespace wb
 		float mX;
 		float mY;
 		int mSize;
-		class Bullet* mBullet;
-		bool mbBullet;
+		bool isLeft;
 	};
 }

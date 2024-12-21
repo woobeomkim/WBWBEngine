@@ -7,6 +7,7 @@ enum class eKeycode
 	A,S,D,F,G,H,J,K,L,
 	Z,X,C,V,B,N,M,
 	LEFT,RIGHT,UP,DOWN,
+	SPACE,
 	END
 };
 

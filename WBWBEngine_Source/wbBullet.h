@@ -3,16 +3,26 @@
 
 namespace wb
 {
-	class GameObject
+	class Bullet
 	{
 	public:
-		GameObject();
-		~GameObject();
+		Bullet();
+		~Bullet();
 
 		void Initialize();
 		void Update();
-		void LateUpdate();
 		void Render(HDC hdc);
+		void LateUpdate();
+
+		void Dead()
+		{
+			mbDead = true;
+		}
+
+		bool IsDead()
+		{
+			return mbDead;
+		}
 
 		void SetPosition(float x, float y)
 		{
@@ -24,10 +34,10 @@ namespace wb
 		float GetPositionY() { return mY; }
 
 	private:
+		float mSpeed;
 		float mX;
 		float mY;
-		int mSize;
-		class Bullet* mBullet;
-		bool mbBullet;
+		float mSize;
+		bool mbDead;
 	};
 }

@@ -29,5 +29,6 @@ namespace wb
 		UINT mHeight;
 
 		class GameObject* mPlayer;
+		class Monster* mMonster;
 	};
 }

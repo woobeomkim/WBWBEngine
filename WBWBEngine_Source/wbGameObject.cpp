@@ -1,5 +1,6 @@
 #include "wbGameObject.h"
 #include "wbInput.h"
+#include "wbBullet.h"
 
 namespace wb
 {
@@ -15,30 +16,51 @@ namespace wb
     {
         mX = 0.0f;
         mY = 0.0f;
+        mSize = 100;
+        mbBullet = false;
     }
 
     void GameObject::Update()
     {
         if (Input::GetKey(eKeycode::LEFT))
         {
-            mX -= 0.1f;
+            mX -= 0.5f;
         }
         if (Input::GetKey(eKeycode::RIGHT))
         {
-            mX += 0.1f;
+            mX += 0.5f;
         }
         if (Input::GetKey(eKeycode::UP))
         {
-            mY -= 0.1f;
+            mY -= 0.5f;
         }
         if (Input::GetKey(eKeycode::DOWN))
         {
-            mY += 0.1f;
+            mY += 0.5f;
         }
+
+        if (Input::GetKeyDown(eKeycode::SPACE) && !mbBullet)
+        {
+            mBullet = new Bullet();
+            mBullet->Initialize();
+            mBullet->SetPosition(mX, mY - mSize / 2);
+            mbBullet = true;
+        }
+
+        if (mbBullet)
+            mBullet->Update();
     }
 
     void GameObject::LateUpdate()
     {
+        if (mBullet && mBullet->IsDead())
+        {
+            delete mBullet;
+            mBullet = nullptr;
+            mbBullet = false;
+        }
+        if (mbBullet)
+            mBullet->LateUpdate();
     }
 
     void GameObject::Render(HDC hdc)
@@ -48,7 +70,10 @@ namespace wb
        // HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, blueBrush);
 
 
-        Rectangle(hdc, 200 + mX, 200 + mY, 300 + mX, 300 + mY);
+        Rectangle(hdc, mX - mSize / 2, mY - mSize / 2, mX + mSize / 2, mY + mSize / 2);
+
+        if (mbBullet)
+            mBullet->Render(hdc);
         //SelectObject(mHdc, oldBrush);
 
         //DeleteObject(blueBrush);
