@@ -21,19 +21,19 @@ namespace wb
     {
         if (Input::GetKey(eKeycode::LEFT))
         {
-            mX -= 0.01f;
+            mX -= 0.1f;
         }
         if (Input::GetKey(eKeycode::RIGHT))
         {
-            mX += 0.01f;
+            mX += 0.1f;
         }
         if (Input::GetKey(eKeycode::UP))
         {
-            mY -= 0.01f;
+            mY -= 0.1f;
         }
         if (Input::GetKey(eKeycode::DOWN))
         {
-            mY += 0.01f;
+            mY += 0.1f;
         }
     }
 
@@ -46,6 +46,7 @@ namespace wb
         // HBRUSH blueBrush = CreateSolidBrush(RGB(0, 0, 255));
        //
        // HBRUSH oldBrush = (HBRUSH)SelectObject(mHdc, blueBrush);
+
 
         Rectangle(hdc, 200 + mX, 200 + mY, 300 + mX, 300 + mY);
         //SelectObject(mHdc, oldBrush);
