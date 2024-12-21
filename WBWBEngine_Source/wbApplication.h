@@ -1,5 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
+
+
 class Application
 {
 public:
@@ -16,7 +18,6 @@ private:
 	HWND mHwnd;
 	HDC mHdc;
 
-	float mX;
-	float mY;
+	class GameObject* mPlayer;
 };
 
