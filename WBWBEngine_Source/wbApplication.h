@@ -1,23 +1,24 @@
 #pragma once
 #include "CommonInclude.h"
 
-
-class Application
+namespace wb
 {
-public:
-	Application();
-	~Application();
+	class Application
+	{
+	public:
+		Application();
+		~Application();
 
-	void Initialize(HWND hwnd);
-	void Update();
-	void Render();
-	void LateUpdate();
+		void Initialize(HWND hwnd);
+		void Update();
+		void Render();
+		void LateUpdate();
 
-	void Run();
-private:
-	HWND mHwnd;
-	HDC mHdc;
+		void Run();
+	private:
+		HWND mHwnd;
+		HDC mHdc;
 
-	class GameObject* mPlayer;
-};
-
+		class GameObject* mPlayer;
+	};
+}

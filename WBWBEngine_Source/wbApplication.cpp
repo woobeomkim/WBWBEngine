@@ -1,42 +1,50 @@
 #include "wbApplication.h"
 #include "wbGameObject.h"
+#include "wbInput.h"
 
-Application::Application()
-	: mHwnd(nullptr)
-	, mHdc(nullptr)
-    , mPlayer(nullptr)
+namespace wb
 {
-}
+	Application::Application()
+		: mHwnd(nullptr)
+		, mHdc(nullptr)
+		, mPlayer(nullptr)
+	{
+	}
 
-Application::~Application()
-{
-}
+	Application::~Application()
+	{
+	}
 
-void Application::Initialize(HWND hwnd)
-{
-	mHwnd = hwnd;
-	mHdc = GetDC(hwnd);
-    mPlayer = new GameObject();
-    mPlayer->Initialize();
-}
+	void Application::Initialize(HWND hwnd)
+	{
+		mHwnd = hwnd;
+		mHdc = GetDC(hwnd);
+		mPlayer = new GameObject();
+		mPlayer->Initialize();
+		Input::Initialize();
+	}
 
-void Application::Update()
-{
-	mPlayer->Update();
-}
+	void Application::Update()
+	{
+		mPlayer->Update();
+		Input::Update();
+	}
 
-void Application::Render()
-{
-    mPlayer->Render(mHdc);
-}
+	void Application::Render()
+	{
+		mPlayer->Render(mHdc);
+	}
 
-void Application::LateUpdate()
-{
-}
+	void Application::LateUpdate()
+	{
+		mPlayer->LateUpdate();
+		Input::LateUpdate();
+	}
 
-void Application::Run()
-{
-	Update();
-	Render();
-	LateUpdate();
+	void Application::Run()
+	{
+		Update();
+		Render();
+		LateUpdate();
+	}
 }

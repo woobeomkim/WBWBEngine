@@ -1,28 +1,30 @@
 #pragma once
 #include "CommonInclude.h"
 
-class GameObject
+namespace wb
 {
-public:
-	GameObject();
-	~GameObject();
-
-	void Initialize();
-	void Update();
-	void LateUpdate();
-	void Render(HDC hdc);
-
-	void SetPosition(float x, float y)
+	class GameObject
 	{
-		mX = x;
-		mY = y;
-	}
+	public:
+		GameObject();
+		~GameObject();
 
-	float GetPositionX() { return mX; }
-	float GetPositionY() { return mY; }
+		void Initialize();
+		void Update();
+		void LateUpdate();
+		void Render(HDC hdc);
 
-private:
-	float mX;
-	float mY;
-};
+		void SetPosition(float x, float y)
+		{
+			mX = x;
+			mY = y;
+		}
 
+		float GetPositionX() { return mX; }
+		float GetPositionY() { return mY; }
+
+	private:
+		float mX;
+		float mY;
+	};
+}
