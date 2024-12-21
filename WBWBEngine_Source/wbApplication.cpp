@@ -46,9 +46,13 @@ namespace wb
 		mPlayer->Initialize();
 		mPlayer->SetPosition(mWidth / 2.0f, mHeight / 2.0f);
 
-		mMonster = new Monster();
-		mMonster->Initialize();
-		mMonster->SetPosition(800, 100);
+		for (int i = 0; i < 8; i++)
+		{
+			Monster* monster = new Monster();
+			monster->Initialize();
+			monster->SetPosition(100 * (i +1), 100);
+			mMonster.push_back(monster);
+		}
 		Input::Initialize();
 	}
 
@@ -56,22 +60,43 @@ namespace wb
 	{
 		Input::Update();
 		mPlayer->Update();
-		mMonster->Update();
+		for (int i = 0; i < mMonster.size(); i++)
+		{
+			mMonster[i]->Update();
+		}
+
 	}
 
 	void Application::Render()
 	{
 		Rectangle(mBackHdc, 0, 0, mWidth, mHeight);
 		mPlayer->Render(mBackHdc);
-		mMonster->Render(mBackHdc);
-
+		for (int i = 0; i < mMonster.size(); i++)
+		{
+			mMonster[i]->Render(mBackHdc);
+		}
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
 	}
 
 	void Application::LateUpdate()
 	{
 		mPlayer->LateUpdate();
-		mMonster->LateUpdate();
+		for (int i = 0; i < mMonster.size(); i++)
+		{
+			mMonster[i]->LateUpdate();
+		}
+
+		for (int i = 0; i < mMonster.size(); i++)
+		{
+			Monster* dead = mMonster[i];
+			if (mMonster[i]->IsDead())
+			{
+				mMonster.erase(mMonster.begin() + i);
+				delete dead;
+				dead = nullptr;
+			}
+		}
+
 		Input::LateUpdate();
 	}
 

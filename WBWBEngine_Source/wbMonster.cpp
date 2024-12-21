@@ -13,6 +13,7 @@ namespace wb
 		mX = 0.0f;
 		mY = 0.0f;
 		mSize = 100;
+		mbDead = false;
 		isLeft = rand() % 2;
 	}
 	void Monster::Update()
