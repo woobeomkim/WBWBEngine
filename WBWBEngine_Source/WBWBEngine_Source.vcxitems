@@ -20,6 +20,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
@@ -27,5 +28,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTime.cpp" />
   </ItemGroup>
 </Project>

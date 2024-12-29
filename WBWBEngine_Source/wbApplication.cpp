@@ -2,6 +2,7 @@
 #include "wbGameObject.h"
 #include "wbInput.h"
 #include "wbMonster.h"
+#include "wbTime.h"
 
 namespace wb
 {
@@ -54,11 +55,13 @@ namespace wb
 			mMonster.push_back(monster);
 		}
 		Input::Initialize();
+		Time::Initialize();
 	}
 
 	void Application::Update()
 	{
 		Input::Update();
+		Time::Update();
 		mPlayer->Update();
 		for (int i = 0; i < mMonster.size(); i++)
 		{
@@ -75,6 +78,7 @@ namespace wb
 		{
 			mMonster[i]->Render(mBackHdc);
 		}
+		Time::Render(mBackHdc);
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
 	}
 
