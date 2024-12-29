@@ -5,6 +5,7 @@
 #include "Editor_Window.h"
 
 #include "..\\WBWBEngine_Source\\wbApplication.h"
+#include "..\\WBWBEngine_Source\\wbLoadScenes.h"
 
 #define MAX_LOADSTRING 100
 
@@ -127,7 +128,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    
 
    srand((UINT)time(0));
+   wb::LoadScenes();
    app.Initialize(hWnd, width, height);
+
    return TRUE;
 }
 

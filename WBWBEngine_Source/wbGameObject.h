@@ -20,12 +20,19 @@ namespace wb
 			mY = y;
 		}
 
+		void SetSize(int size) { mSize = size; }
+
+		void SetSpeed(float speed) { mSpeed = speed; }
+
+		float GetSpeed() { return mSpeed; }
+		int GetSize() { return mSize; }
 		float GetPositionX() { return mX; }
 		float GetPositionY() { return mY; }
 
 	private:
 		float mX;
 		float mY;
+		float mSpeed;
 		int mSize;
 		class Bullet* mBullet;
 		bool mbBullet;

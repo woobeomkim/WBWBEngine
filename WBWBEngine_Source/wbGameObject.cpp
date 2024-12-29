@@ -1,6 +1,7 @@
 #include "wbGameObject.h"
 #include "wbInput.h"
 #include "wbBullet.h"
+#include "wbTime.h"
 
 namespace wb
 {
@@ -14,29 +15,25 @@ namespace wb
 
     void GameObject::Initialize()
     {
-        mX = 0.0f;
-        mY = 0.0f;
-        mSize = 100;
-        mbBullet = false;
     }
 
     void GameObject::Update()
     {
         if (Input::GetKey(eKeycode::LEFT))
         {
-            mX -= 0.5f;
+            mX -= mSpeed * Time::DeltaTime();
         }
         if (Input::GetKey(eKeycode::RIGHT))
         {
-            mX += 0.5f;
+            mX += mSpeed * Time::DeltaTime();
         }
         if (Input::GetKey(eKeycode::UP))
         {
-            mY -= 0.5f;
+            mY -= mSpeed * Time::DeltaTime();
         }
         if (Input::GetKey(eKeycode::DOWN))
         {
-            mY += 0.5f;
+            mY += mSpeed * Time::DeltaTime();
         }
 
         if (Input::GetKeyDown(eKeycode::SPACE) && !mbBullet)

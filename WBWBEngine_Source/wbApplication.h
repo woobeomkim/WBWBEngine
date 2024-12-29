@@ -16,7 +16,6 @@ namespace wb
 
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mHeight; }
-		std::vector<class Monster*>& GetMonsters() { return mMonster; }
 
 		void Run();
 	private:
@@ -28,8 +27,5 @@ namespace wb
 
 		UINT mWidth;
 		UINT mHeight;
-
-		class GameObject* mPlayer;
-		std::vector<class Monster*> mMonster;
 	};
 }

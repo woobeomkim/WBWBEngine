@@ -27,37 +27,6 @@ namespace wb
 	{
 		mY -= mSpeed;
 
-		std::vector<Monster*> monsters = app.GetMonsters();
-
-		for (int i = 0; i < monsters.size(); i++)
-		{
-			float monsterY = monsters[i]->GetPositionY();
-			float monsterX = monsters[i]->GetPositionX();
-			int monsterSize = monsters[i]->GetSize();
-
-			float monsterHalfSize = monsterSize / 2.0f;
-			float mHalfSize = mSize / 2.0f;
-
-			// 몬스터의 AABB 범위
-			float monsterMinX = monsterX - monsterHalfSize;
-			float monsterMaxX = monsterX + monsterHalfSize;
-			float monsterMinY = monsterY - monsterHalfSize;
-			float monsterMaxY = monsterY + monsterHalfSize;
-
-			// 플레이어의 AABB 범위
-			float mMinX = mX - mHalfSize;
-			float mMaxX = mX + mHalfSize;
-			float mMinY = mY - mHalfSize;
-			float mMaxY = mY + mHalfSize;
-
-			// 충돌 여부 확인
-			if (monsterMaxX >= mMinX && monsterMinX <= mMaxX &&
-				monsterMaxY >= mMinY && monsterMinY <= mMaxY) {
-				Dead();
-				monsters[i]->Dead();
-			}
-		}
-
 		if (mY <= 0.0f)
 			Dead();
 	}

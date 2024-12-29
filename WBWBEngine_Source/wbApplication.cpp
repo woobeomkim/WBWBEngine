@@ -3,13 +3,13 @@
 #include "wbInput.h"
 #include "wbMonster.h"
 #include "wbTime.h"
+#include "wbSceneManager.h"
 
 namespace wb
 {
 	Application::Application()
 		: mHwnd(nullptr)
 		, mHdc(nullptr)
-		, mPlayer(nullptr)
 		, mBackHdc(nullptr)
 		, mBackBitmap(nullptr)
 		, mWidth(0)
@@ -19,8 +19,6 @@ namespace wb
 
 	Application::~Application()
 	{
-		if (mPlayer)
-			delete mPlayer;
 	}
 
 	void Application::Initialize(HWND hwnd, UINT width, UINT height)
@@ -43,65 +41,31 @@ namespace wb
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
 		DeleteObject(oldBitmap);
 		
-		mPlayer = new GameObject();
-		mPlayer->Initialize();
-		mPlayer->SetPosition(mWidth / 2.0f, mHeight / 2.0f);
-
-		for (int i = 0; i < 8; i++)
-		{
-			Monster* monster = new Monster();
-			monster->Initialize();
-			monster->SetPosition(100 * (i +1), 100);
-			mMonster.push_back(monster);
-		}
 		Input::Initialize();
 		Time::Initialize();
+		SceneManager::Initialize();
 	}
 
 	void Application::Update()
 	{
 		Input::Update();
 		Time::Update();
-		mPlayer->Update();
-		for (int i = 0; i < mMonster.size(); i++)
-		{
-			mMonster[i]->Update();
-		}
+		SceneManager::Update();
 
 	}
 
 	void Application::Render()
 	{
-		Rectangle(mBackHdc, 0, 0, mWidth, mHeight);
-		mPlayer->Render(mBackHdc);
-		for (int i = 0; i < mMonster.size(); i++)
-		{
-			mMonster[i]->Render(mBackHdc);
-		}
+		Rectangle(mBackHdc, -1, -1, mWidth, mHeight);
 		Time::Render(mBackHdc);
+		SceneManager::Render(mBackHdc);
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
 	}
 
 	void Application::LateUpdate()
 	{
-		mPlayer->LateUpdate();
-		for (int i = 0; i < mMonster.size(); i++)
-		{
-			mMonster[i]->LateUpdate();
-		}
-
-		for (int i = 0; i < mMonster.size(); i++)
-		{
-			Monster* dead = mMonster[i];
-			if (mMonster[i]->IsDead())
-			{
-				mMonster.erase(mMonster.begin() + i);
-				delete dead;
-				dead = nullptr;
-			}
-		}
-
 		Input::LateUpdate();
+		SceneManager::LateUpdate();
 	}
 
 	void Application::Run()
