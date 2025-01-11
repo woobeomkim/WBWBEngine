@@ -18,6 +18,10 @@ namespace wb
 		UINT GetHeight() { return mHeight; }
 
 		void Run();
+
+	private:
+		void adjustWindowRect(HWND hwnd,UINT width, UINT height);
+		void createBackBuffer();
 	private:
 		HWND mHwnd;
 		HDC mHdc;

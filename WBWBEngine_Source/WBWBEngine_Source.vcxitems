@@ -21,6 +21,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h" />
@@ -33,6 +34,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp" />

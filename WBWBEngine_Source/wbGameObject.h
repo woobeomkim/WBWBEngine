@@ -9,10 +9,10 @@ namespace wb
 		GameObject();
 		~GameObject();
 
-		void Initialize();
-		void Update();
-		void LateUpdate();
-		void Render(HDC hdc);
+		virtual void Initialize();
+		virtual void Update();
+		virtual void LateUpdate();
+		virtual void Render(HDC hdc);
 
 		void SetPosition(float x, float y)
 		{

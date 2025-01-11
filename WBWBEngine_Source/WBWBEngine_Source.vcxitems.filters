@@ -5,16 +5,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbBullet.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp">
@@ -26,14 +20,22 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbTitleScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayer.cpp">
+      <Filter>GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTitleScene.cpp">
+      <Filter>Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayScene.cpp">
+      <Filter>Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp">
+      <Filter>GameObject\Monster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -43,9 +45,6 @@
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbBullet.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h">
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h">
@@ -60,7 +59,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbLoadScenes.h">
       <Filter>Comoon</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbTitleScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayer.h">
+      <Filter>GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTitleScene.h">
+      <Filter>Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayScene.h">
+      <Filter>Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h">
+      <Filter>GameObject\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -74,6 +84,18 @@
     </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{f9304bfd-4ddf-4b1d-8224-d83f437c2d56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Player">
+      <UniqueIdentifier>{d2c08fe8-cb6a-42a1-acbb-c77644386418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\TitleScene">
+      <UniqueIdentifier>{3f91cada-51d3-4b7c-a89c-8eec6964881c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\PlayScene">
+      <UniqueIdentifier>{6dc7187c-a4a1-4080-87e9-e0b720da9034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Monster">
+      <UniqueIdentifier>{df533bd7-adb2-4558-88b4-2e4d558db22a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

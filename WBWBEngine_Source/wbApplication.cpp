@@ -23,24 +23,10 @@ namespace wb
 
 	void Application::Initialize(HWND hwnd, UINT width, UINT height)
 	{
-		mHwnd = hwnd;
-		mHdc = GetDC(hwnd);
+		// 코드정리
+		adjustWindowRect(hwnd ,width, height);
+		createBackBuffer();
 
-		RECT rect = { 0,0,width,height };
-		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
-		mWidth = rect.right - rect.left;
-		mHeight = rect.bottom - rect.top;
-		
-		SetWindowPos(mHwnd, nullptr, 0, 0, mWidth, mHeight, 0);
-		ShowWindow(mHwnd, true);
-
-		mBackBitmap = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
-		mBackHdc = CreateCompatibleDC(mHdc);
-		
-		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
-		DeleteObject(oldBitmap);
-		
 		Input::Initialize();
 		Time::Initialize();
 		SceneManager::Initialize();
@@ -74,4 +60,30 @@ namespace wb
 		Render();
 		LateUpdate();
 	}
+
+	void Application::adjustWindowRect(HWND hwnd ,UINT width, UINT height)
+	{
+		mHwnd = hwnd;
+		mHdc = GetDC(hwnd);
+
+		RECT rect = { 0,0,width,height };
+		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+		mWidth = rect.right - rect.left;
+		mHeight = rect.bottom - rect.top;
+
+		SetWindowPos(mHwnd, nullptr, 0, 0, mWidth, mHeight, 0);
+		ShowWindow(mHwnd, true);
+	}
+
+	void Application::createBackBuffer()
+	{
+		mBackBitmap = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
+		mBackHdc = CreateCompatibleDC(mHdc);
+
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
+		DeleteObject(oldBitmap);
+
+	}
+	
 }
