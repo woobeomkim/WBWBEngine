@@ -7,6 +7,7 @@
 #include <string>
 
 #include "wbMath.h"
+#include "wbEnums.h"
 
 #include <mmsystem.h>
 #include <dinput.h>

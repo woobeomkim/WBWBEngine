@@ -2,6 +2,7 @@
 
 #include "CommonInclude.h"
 #include "wbEntity.h"
+#include "wbLayer.h"
 
 namespace wb
 {
@@ -16,10 +17,14 @@ namespace wb
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(class GameObject* obj);
-		void SetName(const std::wstring& name) { mName = name; }
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(class GameObject* obj , const eLayerType type);
+
 	private:
-		std::wstring mName;
-		std::vector<class GameObject*> mGameObjects;
+		void createLayers();
+	private:
+		std::vector<Layer*> mLayers;
 	};
 }

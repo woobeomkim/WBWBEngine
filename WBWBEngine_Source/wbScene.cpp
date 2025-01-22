@@ -4,9 +4,9 @@
 namespace wb
 {
 	Scene::Scene()
-		: mGameObjects{}
-		, mName{}
+		: mLayers{}
 	{
+		createLayers();
 	}
 
 	Scene::~Scene()
@@ -15,34 +15,55 @@ namespace wb
 
 	void Scene::Initialize()
 	{
+		for (Layer* layer : mLayers)
+		{
+			layer->Initialize();
+		}
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* obj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			obj->Update();
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
-		for (GameObject* obj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			obj->LateUpdate();
+			layer->LateUpdate();
 		}
 	}
 
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* obj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			obj->Render(hdc);
+			layer->Render(hdc);
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* obj)
+	void Scene::OnEnter()
 	{
-		mGameObjects.push_back(obj);
+	}
+
+	void Scene::OnExit()
+	{
+	}
+
+	void Scene::AddGameObject(GameObject* obj, const eLayerType type)
+	{
+		mLayers[(UINT)type]->AddGameObject(obj);
+	}
+
+	void Scene::createLayers()
+	{
+		mLayers.resize((UINT)eLayerType::Max);
+		for (UINT i = 0; i < (UINT)eLayerType::Max; i++)
+		{
+			mLayers[i] = new Layer();
+		}
 	}
 }

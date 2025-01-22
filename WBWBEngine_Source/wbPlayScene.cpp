@@ -22,7 +22,7 @@ namespace wb
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
 		sr->ImageLoad(L"C:\\Users\\woobu\\OneDrive\\πŸ≈¡ »≠∏È\\WBWBEngine\\WBWBEngine\\Resources\\bmp\\aaa.cns.bmp");
-		AddGameObject(bg);
+		AddGameObject(bg, eLayerType::BackGround);
 		Scene::Initialize();
 		
 	}
@@ -37,5 +37,12 @@ namespace wb
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+	}
+	void PlayScene::OnEnter()
+	{
+	}
+	void PlayScene::OnExit()
+	{
+
 	}
 }

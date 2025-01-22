@@ -34,4 +34,10 @@ namespace wb
 		std::wstring title = L"환세취호전 Press Space";
 		TextOut(hdc, 1600 / 2.0f, 800 / 2.0f, title.c_str(), wcslen(title.c_str()));
 	}
+	void TitleScene::OnEnter()
+	{
+	}
+	void TitleScene::OnExit()
+	{
+	}
 }

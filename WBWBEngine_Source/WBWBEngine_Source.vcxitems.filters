@@ -38,6 +38,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
@@ -86,6 +87,10 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbEnums.h">
+      <Filter>Comoon</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
