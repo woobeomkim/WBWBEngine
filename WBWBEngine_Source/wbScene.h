@@ -1,10 +1,11 @@
 #pragma once
 
 #include "CommonInclude.h"
+#include "wbEntity.h"
 
 namespace wb
 {
-	class Scene
+	class Scene : public Entity
 	{
 	public:
 		Scene();

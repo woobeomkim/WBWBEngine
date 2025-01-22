@@ -15,6 +15,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbLoadScenes.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbBullet.h" />
@@ -25,12 +27,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTitleScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransfrom.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbBullet.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp" />
@@ -38,7 +44,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTitleScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransfrom.cpp" />
   </ItemGroup>
 </Project>

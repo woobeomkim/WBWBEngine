@@ -32,6 +32,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp">
       <Filter>GameObject\Monster</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransfrom.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
@@ -71,6 +75,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h">
       <Filter>GameObject\Monster</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransfrom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

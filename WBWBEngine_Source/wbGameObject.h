@@ -1,5 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
+#include "wbComponent.h"
 
 namespace wb
 {
@@ -14,27 +15,33 @@ namespace wb
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void SetPosition(float x, float y)
+		template<typename T>
+		T* AddComponent()
 		{
-			mX = x;
-			mY = y;
+			T* comp = new T();
+			comp->SetOwner(this);
+			mComponents.push_back(comp);
+
+			return comp;
 		}
 
-		void SetSize(int size) { mSize = size; }
+		template<typename T>
+		T* GetComponent()
+		{
+			T* component = nullptr;
+			for (Component* comp : mComponents)
+			{
+				component = dynamic_cast<T*>(comp);
 
-		void SetSpeed(float speed) { mSpeed = speed; }
+				if (component)
+					break;
+			}
 
-		float GetSpeed() { return mSpeed; }
-		int GetSize() { return mSize; }
-		float GetPositionX() { return mX; }
-		float GetPositionY() { return mY; }
+			return component;
+		}
 
 	private:
-		float mX;
-		float mY;
-		float mSpeed;
-		int mSize;
-		class Bullet* mBullet;
-		bool mbBullet;
+		std::vector<Component*> mComponents = {};
+		
 	};
 }

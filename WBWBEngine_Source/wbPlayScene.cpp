@@ -1,5 +1,8 @@
 #include "wbPlayScene.h"
 #include "wbGameObject.h"
+#include "wbTransfrom.h"
+#include "wbSpriteRenderer.h"
+#include "wbPlayer.h"
 
 namespace wb
 {
@@ -11,13 +14,20 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-		Scene::Initialize();
 
-		GameObject* obj = new GameObject();
-		obj->SetPosition(800, 600);
-		obj->SetSize(100);
-		obj->SetSpeed(500);
-		AddGameObject(obj);
+		Player* pl = new Player();
+		Transform* tr
+			= pl->AddComponent<Transform>();
+		tr->SetPos(800, 450);
+
+		tr->SetName(L"TR");
+
+		SpriteRenderer* sr
+			= pl->AddComponent<SpriteRenderer>();
+		sr->SetName(L"SR");
+
+		AddGameObject(pl);
+		Scene::Initialize();
 		
 	}
 	void PlayScene::Update()
