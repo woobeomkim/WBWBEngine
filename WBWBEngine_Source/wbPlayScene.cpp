@@ -1,6 +1,6 @@
 #include "wbPlayScene.h"
 #include "wbGameObject.h"
-#include "wbTransfrom.h"
+#include "wbTransform.h"
 #include "wbSpriteRenderer.h"
 #include "wbPlayer.h"
 
@@ -14,19 +14,15 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-
-		Player* pl = new Player();
-		Transform* tr
-			= pl->AddComponent<Transform>();
-		tr->SetPos(800, 450);
-
+		Player* bg = new Player();
+		Transform* tr = bg->AddComponent<Transform>();
+		tr->SetPosition(Vector2(0, 0));
 		tr->SetName(L"TR");
 
-		SpriteRenderer* sr
-			= pl->AddComponent<SpriteRenderer>();
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
-
-		AddGameObject(pl);
+		sr->ImageLoad(L"C:\\Users\\woobu\\OneDrive\\πŸ≈¡ »≠∏È\\WBWBEngine\\WBWBEngine\\Resources\\bmp\\aaa.cns.bmp");
+		AddGameObject(bg);
 		Scene::Initialize();
 		
 	}

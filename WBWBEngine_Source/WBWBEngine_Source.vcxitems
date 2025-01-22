@@ -22,15 +22,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbBullet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbMonster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbPlayScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTitleScene.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransfrom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
@@ -42,11 +45,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMonster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbPlayScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTitleScene.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransfrom.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransform.cpp" />
   </ItemGroup>
 </Project>

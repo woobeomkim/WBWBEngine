@@ -16,6 +16,9 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름�
 
 wb::Application app;
 
+ULONG_PTR gpToken; // Gdiplus 사용을 위한변수
+Gdiplus::GdiplusStartupInput gpsi;
+
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
@@ -65,6 +68,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             app.Run();
         }
     }
+
+    Gdiplus::GdiplusShutdown(gpToken);
 
     return (int) msg.wParam;
 }
@@ -126,6 +131,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
    
+   Gdiplus::GdiplusStartup(&gpToken, &gpsi, nullptr);
 
    srand((UINT)time(0));
    wb::LoadScenes();

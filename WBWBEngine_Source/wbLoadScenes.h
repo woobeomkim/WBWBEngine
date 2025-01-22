@@ -11,6 +11,6 @@ namespace wb
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"PlayScene");
 	}
 }

@@ -33,9 +33,11 @@
       <Filter>GameObject\Monster</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransfrom.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
@@ -76,9 +78,14 @@
       <Filter>GameObject\Monster</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransfrom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbMath.h">
+      <Filter>Comoon</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
