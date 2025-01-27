@@ -2,11 +2,13 @@
 #include "wbInput.h"
 #include "wbBullet.h"
 #include "wbTime.h"
+#include "wbTransform.h"
 
 namespace wb
 {
     GameObject::GameObject()
     {
+        initializeTransform();
     }
 
     GameObject::~GameObject()
@@ -43,5 +45,9 @@ namespace wb
             comp->Render(hdc);
 
      
+    }
+    void GameObject::initializeTransform()
+    {
+        AddComponent<Transform>();
     }
 }

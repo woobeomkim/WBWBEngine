@@ -3,6 +3,7 @@
 #include "wbTransform.h"
 #include "wbSpriteRenderer.h"
 #include "wbPlayer.h"
+#include "wbObject.h"
 
 namespace wb
 {
@@ -14,10 +15,7 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-		Player* bg = new Player();
-		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPosition(Vector2(0, 0));
-		tr->SetName(L"TR");
+		Player* bg = Instantiate<Player>(eLayerType::Player, Vector2(100.0f, 100.0f));
 
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");

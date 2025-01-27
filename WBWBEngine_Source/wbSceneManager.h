@@ -14,6 +14,7 @@ namespace wb
 			 Scene* scene = new T();
 			mActiveScene = scene;
 			scene->SetName(name);
+			mActiveScene = scene;
 			scene->Initialize();
 
 			mScene.insert(std::make_pair(name, scene));
@@ -21,6 +22,7 @@ namespace wb
 			return scene;
 		}
 		static class Scene* LoadScene(const std::wstring& name);
+		static Scene* GetActiveScene() { return mActiveScene; }
 
 		SceneManager();
 		~SceneManager();
@@ -29,6 +31,7 @@ namespace wb
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
+
 
 	private:
 		static std::map<const std::wstring, class Scene*> mScene;

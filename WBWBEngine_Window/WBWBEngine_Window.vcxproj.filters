@@ -5,5 +5,55 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="PlayScene">
+      <UniqueIdentifier>{213af26a-2073-4578-aa1b-4a15ffe1f4fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TitleScene">
+      <UniqueIdentifier>{8363b204-e08a-42b7-aecb-3148a535c3d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{2d3c153d-33da-4d34-9d55-44c6cb40786f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{3444282e-56a2-4eba-83f1-67cea716a8bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleScene">
+      <UniqueIdentifier>{b3334086-247c-4c1b-b792-47081db4f5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EndingScene">
+      <UniqueIdentifier>{e9eda086-b216-4e97-be91-fb18d6f628d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LoadingScene">
+      <UniqueIdentifier>{0cb152c4-550b-4130-a3a8-ff2d67207de8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp">
+      <Filter>PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WBWBEngine_Source\wbTitleScene.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WBWBEngine_Source\wbPlayer.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\WBWBEngine_Source\wbMonster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
+      <Filter>PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h" />
+    <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WBWBEngine_Source\wbMonster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\WBWBEngine_Source\wbMonster.cpp" />
+    <ClCompile Include="..\WBWBEngine_Source\wbPlayer.cpp" />
+    <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp" />
+    <ClCompile Include="..\WBWBEngine_Source\wbTitleScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h" />
+    <ClInclude Include="..\WBWBEngine_Source\wbMonster.h" />
+    <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h" />
+    <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h" />
+    <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

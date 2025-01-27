@@ -21,6 +21,7 @@ namespace wb
 		virtual void OnExit();
 
 		void AddGameObject(class GameObject* obj , const eLayerType type);
+		Layer* GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 
 	private:
 		void createLayers();

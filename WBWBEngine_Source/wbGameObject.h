@@ -42,6 +42,9 @@ namespace wb
 		}
 
 	private:
+		void initializeTransform();
+
+	private:
 		std::vector<Component*> mComponents = {};
 		
 	};
