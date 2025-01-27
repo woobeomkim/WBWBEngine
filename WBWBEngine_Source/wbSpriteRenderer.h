@@ -1,5 +1,7 @@
 #pragma once
 #include "wbComponent.h"
+#include "wbTexture.h"
+
 namespace wb
 {
     class SpriteRenderer : public Component
@@ -13,11 +15,11 @@ namespace wb
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void ImageLoad(const std::wstring& path);
-
+		//void ImageLoad(const std::wstring& path);
+		void SetTexture(Texture* texture) { mTexture = texture; }
+		void SetSize(Vector2 size) { mSize = size; }
 	private:
-		Gdiplus::Image* mImage;
-		UINT mWidth;
-		UINT mHeight;
+		Vector2 mSize;
+		Texture* mTexture;
     };
 }

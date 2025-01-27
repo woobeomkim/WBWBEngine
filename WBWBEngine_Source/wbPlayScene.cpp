@@ -4,6 +4,9 @@
 #include "wbSpriteRenderer.h"
 #include "wbPlayer.h"
 #include "wbObject.h"
+#include "wbTexture.h"
+#include "wbResource.h"
+#include "wbResources.h"
 
 namespace wb
 {
@@ -15,12 +18,13 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-		Player* bg = Instantiate<Player>(eLayerType::Player, Vector2(100.0f, 100.0f));
+		Player* bg = Instantiate<Player>(eLayerType::Player);
 
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
-		sr->ImageLoad(L"C:\\Users\\woobu\\OneDrive\\πŸ≈¡ »≠∏È\\WBWBEngine\\WBWBEngine\\Resources\\bmp\\aaa.cns.bmp");
-		AddGameObject(bg, eLayerType::BackGround);
+		
+		Texture* tex = Resources::Find<Texture>(L"BG");
+		
+		sr->SetTexture(tex);
 		Scene::Initialize();
 		
 	}

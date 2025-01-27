@@ -5,6 +5,7 @@
 #include <map>
 #include <ctime>
 #include <string>
+#include <assert.h>
 
 #include "wbMath.h"
 #include "wbEnums.h"

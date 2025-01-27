@@ -30,6 +30,7 @@
     <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h" />
+    <ClInclude Include="wbLoadResources.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

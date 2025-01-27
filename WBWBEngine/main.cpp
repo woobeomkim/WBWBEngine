@@ -6,6 +6,7 @@
 
 #include "..\\WBWBEngine_Source\\wbApplication.h"
 #include "..\\WBWBEngine_Source\\wbLoadScenes.h"
+#include "..\\WBWBEngine_Window\\wbLoadResources.h"
 
 #define MAX_LOADSTRING 100
 
@@ -134,8 +135,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, nullptr);
 
    srand((UINT)time(0));
+   wb::LoadResources();
    wb::LoadScenes();
    app.Initialize(hWnd, width, height);
+
 
    return TRUE;
 }

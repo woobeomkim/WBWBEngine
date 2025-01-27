@@ -55,5 +55,6 @@
     <ClInclude Include="..\WBWBEngine_Source\wbMonster.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="wbLoadResources.h" />
   </ItemGroup>
 </Project>

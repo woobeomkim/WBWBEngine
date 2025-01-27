@@ -17,6 +17,8 @@ namespace wb
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mHeight; }
 
+		HDC GetHdc() { return mHdc; }
+
 		void Run();
 
 	private:
