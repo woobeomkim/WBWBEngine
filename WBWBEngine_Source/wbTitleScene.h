@@ -17,7 +17,8 @@ namespace wb
         void OnEnter() override;
         void OnExit() override;
     private:
-
+        float accTime = 0.0f;
+        class Texture* mTex = nullptr;
     };
 }
 

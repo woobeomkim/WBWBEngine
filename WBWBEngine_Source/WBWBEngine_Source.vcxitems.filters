@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -20,25 +19,43 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbInput.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransform.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbMath.cpp">
-      <Filter>Comoon</Filter>
+      <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbLayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTransform.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp">
+      <Filter>Resource\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
-      <Filter>Comoon</Filter>
+      <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbGameObject.h">
       <Filter>GameObject</Filter>
@@ -55,36 +72,73 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbInput.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransform.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbMath.h">
-      <Filter>Comoon</Filter>
+      <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbEnums.h">
-      <Filter>Comoon</Filter>
+      <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbObject.h">
-      <Filter>Comoon</Filter>
+      <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbApplication.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbSpriteRenderer.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTransform.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h">
+      <Filter>Resource\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
       <UniqueIdentifier>{49d7f16c-075f-4552-840c-4ecb4e8f4403}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Comoon">
-      <UniqueIdentifier>{5b6c694c-da0f-4de3-a366-ae505d045a5a}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{13fbebf2-c1c1-431b-8440-77d5bf0747c4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Utils">
       <UniqueIdentifier>{f9304bfd-4ddf-4b1d-8224-d83f437c2d56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{bcf1dee7-0b06-42ab-a189-0b18663291d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{d7da1cbb-50de-4148-9fd8-fd21093136a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{42a55bf5-ba53-44bf-896a-50207614532d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{39f34100-a78c-4e29-9428-5e34731e5eb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{5b6c694c-da0f-4de3-a366-ae505d045a5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Resources">
+      <UniqueIdentifier>{a7506b1b-5468-4ed9-a3e4-c01fddc51da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{0952d8b5-2f97-4405-9a30-6cd669760dab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

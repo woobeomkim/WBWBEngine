@@ -22,7 +22,7 @@ namespace wb
 
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		
-		Texture* tex = Resources::Find<Texture>(L"BG");
+		Texture* tex = Resources::Find<Texture>(L"TITLE");
 		
 		sr->SetTexture(tex);
 		Scene::Initialize();

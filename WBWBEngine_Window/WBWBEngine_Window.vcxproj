@@ -23,6 +23,11 @@
     <ClCompile Include="..\WBWBEngine_Source\wbPlayer.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbTitleScene.cpp" />
+    <ClCompile Include="wbBattleScene.cpp" />
+    <ClCompile Include="wbEndingScene.cpp" />
+    <ClCompile Include="wbLoadingScene.cpp" />
+    <ClCompile Include="wbRect.cpp" />
+    <ClCompile Include="wbStudyScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h" />
@@ -30,7 +35,12 @@
     <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h" />
+    <ClInclude Include="wbBattleScene.h" />
+    <ClInclude Include="wbEndingScene.h" />
+    <ClInclude Include="wbLoadingScene.h" />
     <ClInclude Include="wbLoadResources.h" />
+    <ClInclude Include="wbRect.h" />
+    <ClInclude Include="wbStudyScene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

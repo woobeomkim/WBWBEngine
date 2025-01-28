@@ -26,6 +26,12 @@
     <Filter Include="LoadingScene">
       <UniqueIdentifier>{0cb152c4-550b-4130-a3a8-ff2d67207de8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{d8add975-e28a-4c36-8960-4a289fcd83ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StudyScene">
+      <UniqueIdentifier>{4d4feb06-c49f-4ee3-b0fb-7cf867db6ab3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp">
@@ -40,6 +46,19 @@
     <ClCompile Include="..\WBWBEngine_Source\wbMonster.cpp">
       <Filter>Monster</Filter>
     </ClCompile>
+    <ClCompile Include="wbEndingScene.cpp">
+      <Filter>EndingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wbLoadingScene.cpp">
+      <Filter>LoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wbBattleScene.cpp">
+      <Filter>BattleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wbStudyScene.cpp">
+      <Filter>StudyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wbRect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -48,13 +67,30 @@
     <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h">
       <Filter>Player</Filter>
     </ClInclude>
     <ClInclude Include="..\WBWBEngine_Source\wbMonster.h">
       <Filter>Monster</Filter>
     </ClInclude>
-    <ClInclude Include="wbLoadResources.h" />
+    <ClInclude Include="wbEndingScene.h">
+      <Filter>EndingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wbLoadingScene.h">
+      <Filter>LoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wbBattleScene.h">
+      <Filter>BattleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wbLoadResources.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="wbStudyScene.h">
+      <Filter>StudyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wbRect.h" />
   </ItemGroup>
 </Project>
