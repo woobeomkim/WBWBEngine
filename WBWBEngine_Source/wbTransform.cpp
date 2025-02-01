@@ -3,6 +3,7 @@
 namespace wb
 {
 	Transform::Transform()
+		:Component(eComponentType::Transform)
 	{
 	}
 	Transform::~Transform()

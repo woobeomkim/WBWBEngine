@@ -26,6 +26,7 @@
     <ClCompile Include="wbBattleScene.cpp" />
     <ClCompile Include="wbEndingScene.cpp" />
     <ClCompile Include="wbLoadingScene.cpp" />
+    <ClCompile Include="wbPlayerScript.cpp" />
     <ClCompile Include="wbRect.cpp" />
     <ClCompile Include="wbStudyScene.cpp" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <ClInclude Include="wbEndingScene.h" />
     <ClInclude Include="wbLoadingScene.h" />
     <ClInclude Include="wbLoadResources.h" />
+    <ClInclude Include="wbPlayerScript.h" />
     <ClInclude Include="wbRect.h" />
     <ClInclude Include="wbStudyScene.h" />
   </ItemGroup>

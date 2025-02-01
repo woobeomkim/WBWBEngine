@@ -14,6 +14,6 @@ namespace wb
 		SceneManager::CreateScene<StudyScene>(L"StudyScene");
 
 
-		SceneManager::LoadScene(L"StudyScene");
+		SceneManager::LoadScene(L"PlayScene");
 	}
 }

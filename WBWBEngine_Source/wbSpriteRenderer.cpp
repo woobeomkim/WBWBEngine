@@ -6,7 +6,9 @@
 namespace wb
 {
 	SpriteRenderer::SpriteRenderer()
-		:mTexture(nullptr)
+		:
+		Component(eComponentType::SpriteRenderer)
+		,mTexture(nullptr)
 		,mSize(Vector2::One)
 	{
 	}

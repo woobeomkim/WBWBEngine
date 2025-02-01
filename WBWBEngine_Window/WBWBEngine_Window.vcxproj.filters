@@ -58,7 +58,10 @@
     <ClCompile Include="wbStudyScene.cpp">
       <Filter>StudyScene</Filter>
     </ClCompile>
-    <ClCompile Include="wbRect.cpp" />
+    <ClCompile Include="wbRect.cpp">
+      <Filter>StudyScene</Filter>
+    </ClCompile>
+    <ClCompile Include="wbPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -91,6 +94,9 @@
     <ClInclude Include="wbStudyScene.h">
       <Filter>StudyScene</Filter>
     </ClInclude>
-    <ClInclude Include="wbRect.h" />
+    <ClInclude Include="wbRect.h">
+      <Filter>StudyScene</Filter>
+    </ClInclude>
+    <ClInclude Include="wbPlayerScript.h" />
   </ItemGroup>
 </Project>

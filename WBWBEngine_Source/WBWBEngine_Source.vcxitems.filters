@@ -49,6 +49,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTexture.cpp">
       <Filter>Resource\Texture</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbScript.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
@@ -108,6 +113,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTexture.h">
       <Filter>Resource\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbScript.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

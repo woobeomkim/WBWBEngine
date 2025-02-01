@@ -10,6 +10,15 @@ namespace wb
 		Max = 16,
 	};
 
+	enum class eComponentType
+	{
+		Transform,
+		SpriteRenderer,
+		Script,
+		Camera,
+		End,
+	};
+
 	enum class eResourceType
 	{
 		Texture,

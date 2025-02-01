@@ -2,7 +2,7 @@
 
 namespace wb
 {
-	Component::Component()
+	Component::Component(eComponentType type) : mOwner(nullptr), mType(type)
 	{
 	}
 	Component::~Component()
