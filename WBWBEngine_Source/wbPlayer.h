@@ -13,5 +13,9 @@ namespace wb
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
+
+		float GetSpeed() { return mSpeed; }
+	private:
+		float mSpeed;
     };
 }

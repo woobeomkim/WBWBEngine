@@ -7,6 +7,9 @@
 #include "wbTexture.h"
 #include "wbResource.h"
 #include "wbResources.h"
+#include "wbAnimation.h"
+#include "wbAnimator.h"
+#include "..\\WBWBEngine_Window\\\wbPlayerScript.h"
 
 namespace wb
 {
@@ -18,13 +21,22 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
-		Player* bg = Instantiate<Player>(eLayerType::Player);
+		Player* player = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 240.0f));
+		
 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+		Texture* tex = Resources::Find<Texture>(L"PLAYER1");
+		Animator* animator = player->AddComponent<Animator>();
+		player->AddComponent<PlayerScript>();
+
+		animator->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+		//animator->PlayAnimation(L"DOWNWALK", true);
 		
-		Texture* tex = Resources::Find<Texture>(L"TITLE");
-		
-		sr->SetTexture(tex);
+		animator->CreateAnimation(L"LEFTWALK", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animator->CreateAnimation(L"UPWALK", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+		animator->CreateAnimation(L"RIGHTWALK", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+		animator->PlayAnimation(L"UPWALK", true);
+
 		Scene::Initialize();
 		
 	}

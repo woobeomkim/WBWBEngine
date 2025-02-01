@@ -24,7 +24,7 @@ Gdiplus::GdiplusStartupInput gpsi;
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+//INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -96,7 +96,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WBWBENGINE));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_WBWBENGINE);
+    wcex.lpszMenuName   = nullptr;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -163,9 +163,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 메뉴 선택을 구문 분석합니다:
             switch (wmId)
             {
-            case IDM_ABOUT:
+           /* case IDM_ABOUT:
                 DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-                break;
+                break;*/
             case IDM_EXIT:
                 DestroyWindow(hWnd);
                 break;
@@ -206,7 +206,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         PostQuitMessage(0);
         break;
-    case WM_MOVE:
+    /*case WM_MOVE:
     {
         SetWindowText(hWnd, L"WM_MOVE");
     }
@@ -231,7 +231,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
         SetWindowText(hWnd, L"WM_KEYDOWN");
     }
-    break;
+    break;*/
    /* case WM_VSCROLL:
     {
         SetWindowText(hWnd, L"WM_VSCROLL");
@@ -248,22 +248,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-// 정보 대화 상자의 메시지 처리기입니다.
-INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    UNREFERENCED_PARAMETER(lParam);
-    switch (message)
-    {
-    case WM_INITDIALOG:
-        return (INT_PTR)TRUE;
-
-    case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
-        {
-            EndDialog(hDlg, LOWORD(wParam));
-            return (INT_PTR)TRUE;
-        }
-        break;
-    }
-    return (INT_PTR)FALSE;
-}
+//// 정보 대화 상자의 메시지 처리기입니다.
+//INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
+//{
+//    UNREFERENCED_PARAMETER(lParam);
+//    switch (message)
+//    {
+//    case WM_INITDIALOG:
+//        return (INT_PTR)TRUE;
+//
+//    case WM_COMMAND:
+//        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
+//        {
+//            EndDialog(hDlg, LOWORD(wParam));
+//            return (INT_PTR)TRUE;
+//        }
+//        break;
+//    }
+//    return (INT_PTR)FALSE;
+//}

@@ -7,6 +7,8 @@ namespace wb
 	class Camera : public Component
 	{
 	public:
+		Vector2 CalculatePosition(Vector2 pos) { return pos - mDistance; }
+
 		Camera();
 		~Camera();
 

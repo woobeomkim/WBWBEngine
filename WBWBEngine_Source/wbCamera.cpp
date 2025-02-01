@@ -6,6 +6,7 @@
 namespace wb
 {
 	extern Application app;
+
 	Camera::Camera()
 		: Component(eComponentType::Camera)
 		, mTarget(nullptr)

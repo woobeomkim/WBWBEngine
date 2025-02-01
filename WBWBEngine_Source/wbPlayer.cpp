@@ -3,6 +3,7 @@
 namespace wb
 {
 	Player::Player()
+		:mSpeed(100.0f)
 	{
 	}
 	Player::~Player()
