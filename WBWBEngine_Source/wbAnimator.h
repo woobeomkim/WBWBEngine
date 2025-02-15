@@ -27,6 +27,8 @@ namespace wb
 
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
+
+		Animation* GetActiveAnimation() { return mActiveAnimation; }
  	private:
 		std::map<std::wstring, Animation*> mAnimations;
 		Animation* mActiveAnimation;

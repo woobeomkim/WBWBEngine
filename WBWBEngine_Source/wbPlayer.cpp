@@ -3,7 +3,7 @@
 namespace wb
 {
 	Player::Player()
-		:mSpeed(100.0f)
+		: mLeader(nullptr)
 	{
 	}
 	Player::~Player()

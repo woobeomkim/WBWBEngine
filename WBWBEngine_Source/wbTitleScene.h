@@ -6,6 +6,11 @@ namespace wb
     class TitleScene : public Scene
     {
     public:
+        enum class ScreenState
+        {
+            BlackScreen,
+            TitleScreen,
+        };
         TitleScene();
         ~TitleScene();
 
@@ -18,7 +23,10 @@ namespace wb
         void OnExit() override;
     private:
         float accTime = 0.0f;
+        ScreenState mState = ScreenState::TitleScreen;
         class Texture* mTex = nullptr;
+        class GameObject* mBg = nullptr;
+        class SpriteRenderer* mSr = nullptr;
     };
 }
 

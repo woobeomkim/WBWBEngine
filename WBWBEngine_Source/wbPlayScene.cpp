@@ -10,32 +10,97 @@
 #include "wbAnimation.h"
 #include "wbAnimator.h"
 #include "..\\WBWBEngine_Window\\\wbPlayerScript.h"
+#include "wbInput.h"
 
 namespace wb
 {
 	PlayScene::PlayScene()
+		: mCharacters{}
 	{
+		//mCharacters.resize(static_cast<size_t>(eCharacterType::End));
 	}
 	PlayScene::~PlayScene()
 	{
 	}
 	void PlayScene::Initialize()
 	{
-		Player* player = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 240.0f));
-		
-
-		Texture* tex = Resources::Find<Texture>(L"PLAYER1");
+		Player* player = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 200.0f));
+		Texture* tex = Resources::Find<Texture>(L"PLAYER_AT");
 		Animator* animator = player->AddComponent<Animator>();
-		player->AddComponent<PlayerScript>();
+		PlayerScript* ps = player->AddComponent<PlayerScript>();
+		ps->SetPlayer(player);
+		ps->SetOrder(ePlayerOrder::First);
+		player->SetLeader(nullptr);
+		Transform* tr = player->GetComponent<Transform>();
+		//mCharacters[(UINT)eCharacterType::Ataho] = player;
 
 		animator->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
-		//animator->PlayAnimation(L"DOWNWALK", true);
 		
 		animator->CreateAnimation(L"LEFTWALK", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 
 		animator->CreateAnimation(L"UPWALK", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 		animator->CreateAnimation(L"RIGHTWALK", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
-		animator->PlayAnimation(L"UPWALK", true);
+		
+		animator->CreateAnimation(L"DOWNWALK_IDLE", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animator->CreateAnimation(L"LEFTWALK_IDLE", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animator->CreateAnimation(L"UPWALK_IDLE", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+		animator->CreateAnimation(L"RIGHTWALK_IDLE", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+		animator->PlayAnimation(L"DOWNWALK_IDLE", false);
+
+
+		Player* playerRs = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 144.0f));
+		playerRs->SetLeader(tr);
+		tr = playerRs->GetComponent<Transform>();
+		tex = Resources::Find<Texture>(L"PLAYER_RS");
+		Animator* animatorRs = playerRs->AddComponent<Animator>();
+		ps = playerRs->AddComponent<PlayerScript>();
+		ps->SetPlayer(playerRs);
+		ps->SetOrder(ePlayerOrder::Second);
+
+		animatorRs->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorRs->CreateAnimation(L"LEFTWALK", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorRs->CreateAnimation(L"UPWALK", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+		animatorRs->CreateAnimation(L"RIGHTWALK", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorRs->CreateAnimation(L"DOWNWALK_IDLE", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animatorRs->CreateAnimation(L"LEFTWALK_IDLE", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animatorRs->CreateAnimation(L"UPWALK_IDLE", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+		animatorRs->CreateAnimation(L"RIGHTWALK_IDLE", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+		animatorRs->PlayAnimation(L"DOWNWALK_IDLE", false);
+
+		//mCharacters[(UINT)eCharacterType::Rinshang] = playerRs;
+
+		Player* playerSm = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 80.0f));
+		playerSm->SetLeader(tr);
+		tex = Resources::Find<Texture>(L"PLAYER_SM");
+		Animator* animatorSm = playerSm->AddComponent<Animator>();
+		ps = playerSm->AddComponent<PlayerScript>();
+		ps->SetOrder(ePlayerOrder::Third);
+		ps->SetPlayer(playerSm);
+
+		animatorSm->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorSm->CreateAnimation(L"LEFTWALK", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorSm->CreateAnimation(L"UPWALK", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+		animatorSm->CreateAnimation(L"RIGHTWALK", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
+
+		animatorSm->CreateAnimation(L"DOWNWALK_IDLE", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animatorSm->CreateAnimation(L"LEFTWALK_IDLE", tex, Vector2(240.0f, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+
+		animatorSm->CreateAnimation(L"UPWALK_IDLE", tex, Vector2(0.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+ 		animatorSm->CreateAnimation(L"RIGHTWALK_IDLE", tex, Vector2(240.0f, 64.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 0.1f);
+		animatorSm->PlayAnimation(L"DOWNWALK_IDLE", false);
+
+		//mCharacters[(UINT)eCharacterType::Rinshang] = playerSm;
+		playerSm->SetLeader(tr);
 
 		Scene::Initialize();
 		
@@ -46,6 +111,8 @@ namespace wb
 	}
 	void PlayScene::LateUpdate()
 	{
+		if (Input::GetKey(eKeycode::B))
+			SceneManager::LoadScene(L"BattleScene");
 		Scene::LateUpdate();
 	}
 	void PlayScene::Render(HDC hdc)

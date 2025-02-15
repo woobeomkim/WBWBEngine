@@ -6,6 +6,8 @@
 #include <ctime>
 #include <string>
 #include <assert.h>
+#include <queue>
+#include <cmath>
 
 #include "wbMath.h"
 #include "wbEnums.h"

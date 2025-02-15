@@ -45,6 +45,7 @@ namespace wb
 		Rectangle(mBackHdc, -1, -1, mWidth, mHeight);
 		Time::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
+
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
 	}
 

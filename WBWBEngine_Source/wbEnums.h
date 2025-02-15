@@ -2,11 +2,20 @@
 
 namespace wb
 {
+	enum class ePlayerOrder
+	{
+		First,
+		Second,
+		Third,
+		End,
+	};
+
 	enum class eLayerType
 	{
 		None,
 		BackGround,
 		Player,
+		Particle,
 		Max = 16,
 	};
 

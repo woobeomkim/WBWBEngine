@@ -3,6 +3,7 @@
 
 namespace wb
 {
+	class Transform;
     class Player : public GameObject
     {
 	public:
@@ -14,8 +15,17 @@ namespace wb
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		float GetSpeed() { return mSpeed; }
+		void SetLeader(Transform* tr)
+		{
+			mLeader = tr;
+		}
+
+		Transform* GetLeader()
+		{
+			return mLeader;
+		}
+
 	private:
-		float mSpeed;
+		Transform* mLeader;
     };
 }

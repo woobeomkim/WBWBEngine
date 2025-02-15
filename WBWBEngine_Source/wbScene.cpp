@@ -1,8 +1,10 @@
 #include "wbScene.h"
 #include "wbGameObject.h"
+#include "wbApplication.h"
 
 namespace wb
 {
+
 	Scene::Scene()
 		: mLayers{}
 	{
