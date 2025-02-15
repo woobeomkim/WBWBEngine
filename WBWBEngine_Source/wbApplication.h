@@ -13,6 +13,8 @@ namespace wb
 		void Update();
 		void Render();
 		void LateUpdate();
+		
+		void Destroy();
 		void Release();
 
 		UINT GetWidth() { return mWidth; }

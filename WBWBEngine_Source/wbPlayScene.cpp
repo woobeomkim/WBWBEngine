@@ -31,7 +31,7 @@ namespace wb
 		ps->SetPlayer(player);
 		ps->SetOrder(ePlayerOrder::First);
 		player->SetLeader(nullptr);
-		Transform* tr = player->GetComponent<Transform>();
+		Transform* trAt = player->GetComponent<Transform>();
 		//mCharacters[(UINT)eCharacterType::Ataho] = player;
 
 		animator->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
@@ -51,8 +51,8 @@ namespace wb
 
 
 		Player* playerRs = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 144.0f));
-		playerRs->SetLeader(tr);
-		tr = playerRs->GetComponent<Transform>();
+		playerRs->SetLeader(trAt);
+		Transform* trRs = playerRs->GetComponent<Transform>();
 		tex = Resources::Find<Texture>(L"PLAYER_RS");
 		Animator* animatorRs = playerRs->AddComponent<Animator>();
 		ps = playerRs->AddComponent<PlayerScript>();
@@ -77,7 +77,7 @@ namespace wb
 		//mCharacters[(UINT)eCharacterType::Rinshang] = playerRs;
 
 		Player* playerSm = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 80.0f));
-		playerSm->SetLeader(tr);
+		playerSm->SetLeader(trRs);
 		tex = Resources::Find<Texture>(L"PLAYER_SM");
 		Animator* animatorSm = playerSm->AddComponent<Animator>();
 		ps = playerSm->AddComponent<PlayerScript>();
@@ -100,8 +100,7 @@ namespace wb
 		animatorSm->PlayAnimation(L"DOWNWALK_IDLE", false);
 
 		//mCharacters[(UINT)eCharacterType::Rinshang] = playerSm;
-		playerSm->SetLeader(tr);
-
+		
 		Scene::Initialize();
 		
 	}

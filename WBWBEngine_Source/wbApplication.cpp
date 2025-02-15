@@ -61,6 +61,13 @@ namespace wb
 		Update();
 		Render();
 		LateUpdate();
+
+		Destroy();
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::Release()

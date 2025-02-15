@@ -7,6 +7,14 @@ namespace wb
 	class GameObject
 	{
 	public:
+		enum class eState
+		{
+			Active,
+			Paused,
+			Dead,
+			End
+		};
+
 		GameObject();
 		~GameObject();
 
@@ -41,11 +49,23 @@ namespace wb
 			return component;
 		}
 
+		eState GetState() { return mState; }
+		void SetActive(bool power)
+		{
+			if (power) mState = eState::Active;
+			else mState = eState::Paused;
+		}
+
+		void Death() { mState = GameObject::eState::Dead; }
+
+		bool IsActive() { return mState == eState::Active; }
+		bool IsDead() { return mState == eState::Dead; }
+
 	private:
 		void initializeTransform();
 
 	private:
 		std::vector<Component*> mComponents = {};
-		
+		eState mState;
 	};
 }

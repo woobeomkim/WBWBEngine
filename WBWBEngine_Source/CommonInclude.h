@@ -9,6 +9,7 @@
 #include <queue>
 #include <cmath>
 #include <functional>
+#include <filesystem>
 
 #include "wbMath.h"
 #include "wbEnums.h"

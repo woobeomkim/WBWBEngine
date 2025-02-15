@@ -7,6 +7,7 @@
 namespace wb
 {
     GameObject::GameObject()
+        :mState(eState::Active)
     {
         initializeTransform();
     }

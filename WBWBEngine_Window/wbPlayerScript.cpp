@@ -5,6 +5,7 @@
 #include "wbTransform.h"
 #include "wbAnimator.h"
 #include "wbPlayer.h"
+#include "wbObject.h"
 
 namespace wb
 {
@@ -52,6 +53,7 @@ namespace wb
 	}
 	void PlayerScript::LateUpdate()
 	{
+
 	}
 	void PlayerScript::Render(HDC hdc)
 	{
@@ -89,6 +91,7 @@ namespace wb
 	void PlayerScript::move()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
 		mHorizontal = 0.0f;
 		mVertical = 0.0f;
 
@@ -145,20 +148,18 @@ namespace wb
 
 			// 앞 캐릭터의 이동 경로를 따라가기 (웨이포인트 사용)
 			mAccTime += Time::DeltaTime();
-			if (!mWayPoints.empty() && mAccTime>=0.5f)
+			if (!mWayPoints.empty())
 			{
 				mAccTime = 0.0f;
 				//Vector2 targetPos = mWayPoints.front(); // 가장 오래된 위치 가져오기
 				Vector2 targetPos = mWayPoints.front().first; // 가장 오래된 위치 가져오기
 				eDir dir = mWayPoints.front().second; // 가장 오래된 위치 가져오기
-				mWayPoints.pop();
 				Vector2 currentPos = tr->GetPosition();
-				Vector2 pos;
 				int count = (UINT)GetOrder();
+				Vector2 LeaderPos = mPlayer->GetLeader()->GetPosition();
 				//Transform* tr = GetOwner()->GetComponent<Transform>();
 				//Vector2 pos = tr->GetPosition();
-				pos = targetPos;
-
+				
 				/*switch (mDir)
 				{
 					case eDir::Left:
@@ -179,28 +180,103 @@ namespace wb
 				}*/
 				switch (dir)
 				{
-					case eDir::Left:
-						pos.x = pos.x + count * mDiffWidth;
-						break;
+				case eDir::Left:
+				{
+					if (mHorizontal == -1.0f)
+					{
+						if(targetPos.x < pos.x)
+						pos.x += mHorizontal * mSpeed * Time::DeltaTime();
+						else if (abs(pos.x - targetPos.x) < 0.1f )
+						{
+							mAnimator->PlayAnimation(L"LEFTWALK", true);
+							pos.x = LeaderPos.x + mHorizontal* mSpeed * Time::DeltaTime() ;
+							pos.x = pos.x + mDiffWidth;
+							pos.y = targetPos.y;
 
-					case eDir::Right:
-						pos.x = pos.x - count * mDiffWidth;
-						break;
+						}
+						else if (pos.x < targetPos.x)
+							pos.x += -mHorizontal * mSpeed * Time::DeltaTime();
+					}
+				}
+				break;
 
-					case eDir::Down:
-						pos.y = pos.y - count * mDiffHeight;
-						break;
+				case eDir::Right:
+				{
+					if (mHorizontal == 1.0f)
+					{
+						if(pos.x < targetPos.x)
+						pos.x += mHorizontal * mSpeed * Time::DeltaTime();
+						else if (abs(targetPos.x - pos.x) < 0.1f )
+						{
+							mAnimator->PlayAnimation(L"RIGHTWALK", true);
+							pos.x = LeaderPos.x + mHorizontal * mSpeed * Time::DeltaTime() ;
+							pos.x = pos.x - mDiffWidth;
+							pos.y = targetPos.y;
+						}
+						else if (pos.x > targetPos.x)
+							pos.x -= mHorizontal * mSpeed * Time::DeltaTime();
+					}
+				}
+				break;
 
-					case eDir::Up:
-						pos.y = pos.y + count * mDiffHeight;
-						break;
+				case eDir::Down:
+				{
+					if (mVertical == 1.0f)
+					{
+						if (pos.y < targetPos.y)
+						{
+							pos.y += mVertical * mSpeed * Time::DeltaTime();
+						}
+						else if (abs(pos.y - targetPos.y) <0.1f)
+						{
+							mAnimator->PlayAnimation(L"DOWNWALK", true);
+							pos.y = LeaderPos.y + mVertical * mSpeed * Time::DeltaTime(); 
+							pos.y = pos.y - mDiffHeight;
+							pos.x = targetPos.x;
+
+						}
+						else if(pos.y > targetPos.y)
+						{
+							pos.y += -mVertical * mSpeed * Time::DeltaTime();
+							//pos.y += mVertical * mSpeed * Time::DeltaTime();
+							//pos.y = targetPos.y + count * mDiffHeight;
+						}
+					}
+				}
+				break;
+
+				case eDir::Up:
+				{
+					if (mVertical == -1.0f)
+					{
+						if (pos.y < targetPos.y)
+						{
+							pos.y += -mVertical * mSpeed * Time::DeltaTime();
+						}
+						else if (abs(pos.y - targetPos.y) <0.1f)
+						{
+							mAnimator->PlayAnimation(L"UPWALK", true);
+							//pos.y = LeaderPos.y + mDiffHeight;
+							pos.y = LeaderPos.y + mVertical * mSpeed * Time::DeltaTime();
+							pos.y = pos.y + mDiffHeight;
+							pos.x = targetPos.x;
+
+						}
+						else if (pos.y > targetPos.y)
+						{
+							pos.y += mVertical * mSpeed * Time::DeltaTime();
+							//pos.y = targetPos.y + count * mDiffHeight;
+						}
+					}
+				}
+				break;
 				}
 
 				//pos.x = std::lerp(currentPos.x, targetPos.x, mSpeed * Time::DeltaTime());
 				//pos.y = std::lerp(currentPos.y, targetPos.y - count * mDiffHeight, mSpeed * Time::DeltaTime());
 				
-				tr->SetPosition(pos);
 				//mWayPoints.pop();
+			tr->SetPosition(pos);
 			}
 		}
 		

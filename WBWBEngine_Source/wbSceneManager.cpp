@@ -46,6 +46,11 @@ namespace wb
 		mActiveScene->Render(hdc);
 	}
 
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
+	}
+
 	void SceneManager::Release()
 	{
 		for (auto& iter : mScene)

@@ -42,12 +42,12 @@ namespace wb
 		static bool GetKeyUp(eKeycode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Up; }
 
 		static Vector2 GetMousePosition() { return mMousePosition; }
+		static bool isKeyDown(eKeycode code);
 
 	private:
 		static void createKeys();
 		static void updateKeys();
 		static void updateKey(Input::Key& key);
-		static bool isKeyDown(eKeycode code);
 		static void updateKeyDown(Input::Key& key);
 		static void updateKeyUp(Input::Key& key);
 		static void getMousePositionByWindow();
