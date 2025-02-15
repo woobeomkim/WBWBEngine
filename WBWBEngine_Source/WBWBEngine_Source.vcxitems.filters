@@ -52,10 +52,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScript.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimation.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimator.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimation.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
@@ -118,10 +122,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScript.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimation.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimator.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimation.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

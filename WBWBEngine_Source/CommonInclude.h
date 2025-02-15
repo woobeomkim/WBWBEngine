@@ -8,6 +8,7 @@
 #include <assert.h>
 #include <queue>
 #include <cmath>
+#include <functional>
 
 #include "wbMath.h"
 #include "wbEnums.h"

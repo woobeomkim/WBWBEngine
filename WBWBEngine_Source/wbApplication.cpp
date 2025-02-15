@@ -4,6 +4,7 @@
 #include "wbMonster.h"
 #include "wbTime.h"
 #include "wbSceneManager.h"
+#include "wbResources.h"
 
 namespace wb
 {
@@ -60,6 +61,12 @@ namespace wb
 		Update();
 		Render();
 		LateUpdate();
+	}
+
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 
 	void Application::adjustWindowRect(HWND hwnd ,UINT width, UINT height)

@@ -13,11 +13,13 @@ namespace wb
 		void Update();
 		void Render();
 		void LateUpdate();
+		void Release();
 
 		UINT GetWidth() { return mWidth; }
 		UINT GetHeight() { return mHeight; }
 
 		HDC GetHdc() { return mHdc; }
+		HWND GetHwnd() { return mHwnd; }
 
 		void Run();
 

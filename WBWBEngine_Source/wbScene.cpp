@@ -13,12 +13,21 @@ namespace wb
 
 	Scene::~Scene()
 	{
+		for (Layer* layer : mLayers)
+		{
+			if (layer == nullptr)
+				continue;
+			delete layer;
+			layer = nullptr;
+		}
 	}
 
 	void Scene::Initialize()
 	{
 		for (Layer* layer : mLayers)
 		{
+			if (layer == nullptr)
+				continue;
 			layer->Initialize();
 		}
 	}
@@ -27,6 +36,8 @@ namespace wb
 	{
 		for (Layer* layer : mLayers)
 		{
+			if (layer == nullptr)
+				continue;
 			layer->Update();
 		}
 	}
@@ -35,6 +46,8 @@ namespace wb
 	{
 		for (Layer* layer : mLayers)
 		{
+			if (layer == nullptr)
+				continue;
 			layer->LateUpdate();
 		}
 	}
@@ -43,6 +56,8 @@ namespace wb
 	{
 		for (Layer* layer : mLayers)
 		{
+			if (layer == nullptr)
+				continue;
 			layer->Render(hdc);
 		}
 	}

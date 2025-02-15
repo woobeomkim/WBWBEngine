@@ -59,25 +59,25 @@ namespace wb
 	void PlayerScript::idle()
 	{
 
-		if (Input::GetKey(eKeycode::LEFT))
+		if (Input::GetKey(eKeycode::Left))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Left;
 			mAnimator->PlayAnimation(L"LEFTWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::RIGHT))
+		else if (Input::GetKey(eKeycode::Right))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Right;
 			mAnimator->PlayAnimation(L"RIGHTWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::UP))
+		else if (Input::GetKey(eKeycode::Up))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Up;
 			mAnimator->PlayAnimation(L"UPWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::DOWN))
+		else if (Input::GetKey(eKeycode::Down))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Down;
@@ -93,10 +93,10 @@ namespace wb
 		mVertical = 0.0f;
 
 		// 키 입력 감지
-		bool left = Input::GetKey(eKeycode::LEFT);
-		bool right = Input::GetKey(eKeycode::RIGHT);
-		bool up = Input::GetKey(eKeycode::UP);
-		bool down = Input::GetKey(eKeycode::DOWN);
+		bool left = Input::GetKey(eKeycode::Left);
+		bool right = Input::GetKey(eKeycode::Right);
+		bool up = Input::GetKey(eKeycode::Up);
+		bool down = Input::GetKey(eKeycode::Down);
 
 		// 반대 방향 입력 예외 처리
 		if (left && right) left = right = false;
