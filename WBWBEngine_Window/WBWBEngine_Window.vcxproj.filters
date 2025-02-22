@@ -62,6 +62,8 @@
       <Filter>StudyScene</Filter>
     </ClCompile>
     <ClCompile Include="wbPlayerScript.cpp" />
+    <ClCompile Include="Smisu.cpp" />
+    <ClCompile Include="RinShan.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -98,5 +100,7 @@
       <Filter>StudyScene</Filter>
     </ClInclude>
     <ClInclude Include="wbPlayerScript.h" />
+    <ClInclude Include="Smisu.h" />
+    <ClInclude Include="RinShan.h" />
   </ItemGroup>
 </Project>

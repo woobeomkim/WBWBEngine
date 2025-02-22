@@ -51,18 +51,26 @@ namespace wb
 		{
 			return mDir;
 		}
+
+		static void SetTrail(Vector2 pos , ePlayerOrder order)
+		{
+			trail[(int)order] = pos;
+		}
+
 	private:
 		void idle();
 		void move();
-	private:
+		void moveCharacter(float newX, float newY);
+		void updateFollowerPosition(Vector2 target);
+	protected:
 		ePlayerOrder mOrder;
 		Player* mPlayer;
 		float mAccTime;
+		static float moveDeltaTime;
 		const float mDiffHeight = 64.0f;
 		const float mDiffWidth = 48.0f;
-		//static std::queue<Vector2> mWayPoints;
-		static std::queue<std::pair<Vector2,eDir>> mWayPoints;
-		static const int mMaxWayPoints;
+		static std::vector<Vector2> trail;
+		static const int trailSize;
 		float mSpeed;
 		eState mState;
 		class Animator* mAnimator;

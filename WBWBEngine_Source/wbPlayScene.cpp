@@ -11,6 +11,8 @@
 #include "wbAnimator.h"
 #include "..\\WBWBEngine_Window\\\wbPlayerScript.h"
 #include "wbInput.h"
+#include "..\\WBWBEngine_Window\\Smisu.h"
+#include "..\\WBWBEngine_Window\RinShan.h"
 
 namespace wb
 {
@@ -33,6 +35,8 @@ namespace wb
 		player->SetLeader(nullptr);
 		Transform* trAt = player->GetComponent<Transform>();
 		//mCharacters[(UINT)eCharacterType::Ataho] = player;
+		PlayerScript::SetTrail(Vector2(320.0f, 200.0f), ePlayerOrder::First);
+
 
 		animator->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 		
@@ -55,9 +59,10 @@ namespace wb
 		Transform* trRs = playerRs->GetComponent<Transform>();
 		tex = Resources::Find<Texture>(L"PLAYER_RS");
 		Animator* animatorRs = playerRs->AddComponent<Animator>();
-		ps = playerRs->AddComponent<PlayerScript>();
+		ps = playerRs->AddComponent<RinShan>();
 		ps->SetPlayer(playerRs);
 		ps->SetOrder(ePlayerOrder::Second);
+		PlayerScript::SetTrail(Vector2(320.0f, 144.0f), ePlayerOrder::Second);
 
 		animatorRs->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 
@@ -80,7 +85,8 @@ namespace wb
 		playerSm->SetLeader(trRs);
 		tex = Resources::Find<Texture>(L"PLAYER_SM");
 		Animator* animatorSm = playerSm->AddComponent<Animator>();
-		ps = playerSm->AddComponent<PlayerScript>();
+		ps = playerSm->AddComponent<Smisu>();
+		PlayerScript::SetTrail(Vector2(320.0f, 80.0f), ePlayerOrder::Third);
 		ps->SetOrder(ePlayerOrder::Third);
 		ps->SetPlayer(playerSm);
 

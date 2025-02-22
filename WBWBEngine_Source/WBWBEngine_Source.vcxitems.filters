@@ -98,9 +98,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
-      <Filter>Layer</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -130,6 +127,9 @@
       <Filter>Component</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

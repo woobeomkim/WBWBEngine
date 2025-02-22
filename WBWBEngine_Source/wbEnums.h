@@ -25,6 +25,8 @@ namespace wb
 		SpriteRenderer,
 		Animator,
 		Script,
+		Smisu,
+		RinShan,
 		Camera,
 		End,
 	};

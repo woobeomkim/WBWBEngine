@@ -23,6 +23,8 @@
     <ClCompile Include="..\WBWBEngine_Source\wbPlayer.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbTitleScene.cpp" />
+    <ClCompile Include="RinShan.cpp" />
+    <ClCompile Include="Smisu.cpp" />
     <ClCompile Include="wbBattleScene.cpp" />
     <ClCompile Include="wbEndingScene.cpp" />
     <ClCompile Include="wbLoadingScene.cpp" />
@@ -36,6 +38,8 @@
     <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h" />
+    <ClInclude Include="RinShan.h" />
+    <ClInclude Include="Smisu.h" />
     <ClInclude Include="wbBattleScene.h" />
     <ClInclude Include="wbEndingScene.h" />
     <ClInclude Include="wbLoadingScene.h" />
