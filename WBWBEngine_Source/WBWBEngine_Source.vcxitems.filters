@@ -128,7 +128,7 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
-      <Filter>Resource</Filter>
+      <Filter>Layer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

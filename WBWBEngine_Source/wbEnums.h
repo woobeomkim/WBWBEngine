@@ -25,8 +25,13 @@ namespace wb
 		SpriteRenderer,
 		Animator,
 		Script,
+		Ataho,
 		Smisu,
 		RinShan,
+		BattleAtaho,
+		BattleRinShan,
+		BattleSmisu,
+		Stat,
 		Camera,
 		End,
 	};

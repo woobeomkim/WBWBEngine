@@ -48,49 +48,29 @@ namespace wb
 
 	void Smisu::move()
 	{
-		int order = (int)GetOrder();
-		Vector2 target = trail[order - 1];
-		float speed = 0.1f;
+		static float moveDeltaTime = 0.0f;
+		moveDeltaTime += Time::DeltaTime();
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		if (Input::GetKey(eKeycode::Left) || Input::GetKey(eKeycode::Right) || Input::GetKey(eKeycode::Up) || Input::GetKey(eKeycode::Down)) mIsMoving = true;
+		else mIsMoving = false;
+		if (mIsMoving)
+		{
+			if (!prevRinshanPositions.empty())
+			{
+				moveDeltaTime = 0.0f;
+				if (prevRinshanPositions.size() >= delayFrames)
+				{
+					Vector2 rinshanPos = prevRinshanPositions.front().first;
+					mDir = prevRinshanPositions.front().second;
+					prevRinshanPositions.pop();
+					pos = rinshanPos;
 
-		float newX = pos.x;
-		float newY = pos.y;
-
-		if (Input::GetKey(eKeycode::Left))
-		{
-			mDir = eDir::Left;
-			newX -= mSpeed * Time::DeltaTime();
-			mIsMoving = true;
+					tr->SetPosition(pos);
+					prevSmisuPositions.push(std::make_pair(pos, mDir));
+				}
+			}
 		}
-		else if (Input::GetKey(eKeycode::Right))
-		{
-			mDir = eDir::Right;
-			newX += mSpeed * Time::DeltaTime();
-			mIsMoving = true;
-		}
-		else if (Input::GetKey(eKeycode::Up))
-		{
-			mDir = eDir::Up;
-			newY -= mSpeed * Time::DeltaTime();
-			mIsMoving = true;
-		}
-		else if (Input::GetKey(eKeycode::Down))
-		{
-			mDir = eDir::Down;
-			newY += mSpeed * Time::DeltaTime();
-			mIsMoving = true;
-		}
-		else
-		{
-			mIsMoving = false;
-		}
-		pos = Vector2(newX, newY);
-		//pos.x += (target.x - pos.x) * speed;
-		//pos.y += (target.y - pos.y) * speed;
-		trail[(int)GetOrder()] = pos;
-		tr->SetPosition(pos);
-
 		if (!mIsMoving)
 		{
 			switch (mDir)

@@ -49,44 +49,80 @@ namespace wb
 		GameObject* gameObj = mAnimator->GetOwner();
 		Transform* tr = gameObj->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		float rot = tr->GetRotation();
+		Vector2 scale = tr->GetScale();
 
 		if (mainCamera)
 			pos = mainCamera->CalculatePosition(pos);
 	
 
 		Sprite sprite = mAnimationSheet[mIndex];
-		if (mTexture->GetTextureType() == Texture::eTextureType::Bmp)
+		Texture::eTextureType type = mTexture->GetTextureType();
+		if (type == Texture::eTextureType::Bmp)
 		{
-			TransparentBlt(hdc, pos.x, pos.y
-				, sprite.size.x
-				, sprite.size.y
-				, mTexture->GetHdc()
-				, sprite.leftTop.x
-				, sprite.leftTop.y
-				, sprite.size.x
-				, sprite.size.y
-				, RGB(255, 0, 255));
-		}
-		else
-		{
-			BLENDFUNCTION func = {};
-			func.BlendOp = AC_SRC_OVER;
-			func.BlendFlags = 0;
-			func.AlphaFormat = AC_SRC_ALPHA;
-			func.SourceConstantAlpha = 255; //RGBA의 알파값
-
 			HDC imgHdc = mTexture->GetHdc();
 
-			AlphaBlend(hdc
-				, pos.x, pos.y
-				, sprite.size.x
-				, sprite.size.y
-				, imgHdc
+			if (mTexture->IsAlpha())
+			{
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255;
+
+				AlphaBlend(hdc
+					, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, func);
+			}
+			else
+			{
+				TransparentBlt(hdc
+					, pos.x - (sprite.size.x / 2.0f)
+					, pos.y - (sprite.size.y / 2.0f)
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+					, imgHdc
+					, sprite.leftTop.x
+					, sprite.leftTop.y
+					, sprite.size.x
+					, sprite.size.y
+					, RGB(255, 0, 255));
+			}
+		}
+		else if (type == Texture::eTextureType::Png)
+		{
+			Gdiplus::ImageAttributes imgAtt = {};
+
+			imgAtt.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255));
+
+			Gdiplus::Graphics graphics(hdc);
+
+			graphics.TranslateTransform(pos.x, pos.y);
+			graphics.RotateTransform(rot);
+			graphics.TranslateTransform(-pos.x, -pos.y);
+
+			graphics.DrawImage(mTexture->GetImage()
+				, Gdiplus::Rect
+				(
+					pos.x - (sprite.size.x / 2.0f)
+					, pos.y - (sprite.size.y / 2.0f)
+					, sprite.size.x * scale.x
+					, sprite.size.y * scale.y
+				)
 				, sprite.leftTop.x
 				, sprite.leftTop.y
 				, sprite.size.x
 				, sprite.size.y
-				, func);
+				, Gdiplus::UnitPixel
+				,/*imgAtt*/nullptr);
 		}
 	}
 	void Animation::CreateAnimation(const std::wstring& name, Texture* spriteSheet

@@ -7,6 +7,7 @@
 #include "..\\WBWBEngine_Source\\wbApplication.h"
 #include "..\\WBWBEngine_Source\\wbLoadScenes.h"
 #include "..\\WBWBEngine_Window\\wbLoadResources.h"
+#include "..\\WBWBEngine_Source\\wbTime.h"
 
 #define MAX_LOADSTRING 100
 
@@ -51,7 +52,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     MSG msg = {};
 
-    // 기본 메시지 루프입니다:
     while (true)
     {
         if (msg.message == WM_QUIT) break;

@@ -1,5 +1,6 @@
 #include "wbTexture.h"
 #include "wbApplication.h"
+#include "wbResources.h"
 
 extern wb::Application app;
 
@@ -7,11 +8,37 @@ namespace wb
 {
 	Texture::Texture()
 		: Resource(eResourceType::Texture)
+		, mbAlpha(false)
 	{
 	}
 	Texture::~Texture()
 	{
 	}
+
+	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+	{
+		Texture* image = Resources::Find<Texture>(name);
+		if (image)
+			return image;
+
+		image = new Texture();
+		image->SetName(name);
+		image->SetWidth(width);
+		image->SetHeight(height);
+
+		HDC hdc = app.GetHdc();
+		HWND hwnd = app.GetHwnd();
+
+		image->mBitmap = CreateCompatibleBitmap(hdc, width, height);
+		image->mHdc = CreateCompatibleDC(hdc);
+
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
+		DeleteObject(oldBitmap);
+
+		Resources::Insert(name + L"Image", image);
+		return image;
+	}
+
 	HRESULT Texture::Load(const std::wstring& path)
 	{
 		std::wstring ext
@@ -30,6 +57,11 @@ namespace wb
 
 			mWidth = info.bmWidth;
 			mHeight = info.bmHeight;
+			
+			if (info.bmBitsPixel == 32)
+				mbAlpha = true;
+			else if (info.bmBitsPixel == 24)
+				mbAlpha = false;
 
 			HDC mainDC = app.GetHdc();
 			mHdc = CreateCompatibleDC(mainDC);

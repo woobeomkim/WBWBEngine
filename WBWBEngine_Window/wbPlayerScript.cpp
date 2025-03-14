@@ -9,9 +9,11 @@
 
 namespace wb
 {
-    std::vector<Vector2> PlayerScript::trail = std::vector<Vector2>(3, Vector2::Zero);
-    const int PlayerScript::trailSize = 3;
     float PlayerScript::moveDeltaTime = 0.0f;
+
+    std::queue<std::pair<Vector2,PlayerScript::eDir>> PlayerScript::prevAtahoPositions = {};
+    std::queue<std::pair<Vector2,PlayerScript::eDir>> PlayerScript::prevRinshanPositions = {};
+    std::queue<std::pair<Vector2,PlayerScript::eDir>> PlayerScript::prevSmisuPositions = {};
     PlayerScript::PlayerScript()
         : mState(eState::Idle)
         , mAnimator(nullptr)
@@ -127,12 +129,6 @@ namespace wb
 			mIsMoving = false;
 		}
 
-        if(mPlayer->GetLeader() == nullptr)
-			moveCharacter(newX, newY);
-	//	else
-    //        updateFollowerPosition(trail[(int)GetOrder() -1]);
-
-
         if (!mIsMoving)
         {
             switch (mDir)
@@ -158,24 +154,10 @@ namespace wb
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 		int order = (int)mOrder;
-
-		if (trail.size() > trailSize)
-		{
-            trail.pop_back();
-		}
-
-		tr->SetPosition(Vector2(newX, newY));
-		trail[order] = Vector2(newX, newY);
     }
     void PlayerScript::updateFollowerPosition(Vector2 target)
     {
-        float speed = 0.1f;
-		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector2 pos = tr->GetPosition();
-		pos.x += (target.x - pos.x) * speed;
-		pos.y += (target.y - pos.y) * speed;
-		trail[(int)GetOrder()] = pos;
-        tr->SetPosition(pos);
+   
     }
 
 }

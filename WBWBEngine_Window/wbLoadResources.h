@@ -22,6 +22,22 @@ namespace wb
 		Resources::Load<Texture>(L"MONKEY", L"..\\Resources\\Bmp\\AnimationSheet\\zsa_saru.bmp");
 		Resources::Load<Texture>(L"BATTLE_AT", L"..\\Resources\\Bmp\\AnimationSheet\\btl_at.bmp");
 		
+		// ATAHO BATTLE
+		Resources::Load<Texture>(L"ATAHO_BATTLE_IDLE",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_IDLE.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_PUNCH",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_PUNCH.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_ROTATEKICK",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_ROTATEKICK.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_SLEEP",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_SLEEP.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_WIN",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_WIN.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_GUARD",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_GUARD.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_BEATTACKED",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_BEATTACKED.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_FLYINGKICK",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_FLYINGKICK.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_FAINTING",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_FAINTING.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_DRINKING",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_DRINKING.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_DRUNKSTATE",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_STATE_DRUNK.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_LEGKICK",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_LEGKICK.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_ROAR",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_ROAR.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_HOGYUKGWON",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_HOGYUKGWON.bmp");
+		Resources::Load<Texture>(L"ATAHO_BATTLE_HOPOGWON",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_HOPOGWON.bmp");
 		
 		//Resources::Load<Texture>(L"PLAYER1_IDLE", L"..\\Resources\\Bmp\\AnimationSheet\\cara_at_idle.bmp");
 	}

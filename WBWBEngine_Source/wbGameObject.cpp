@@ -6,6 +6,12 @@
 
 namespace wb
 {
+    void Destroy(GameObject* gameObject)
+    {
+        if (gameObject != nullptr)
+            gameObject->death();
+    }
+
     GameObject::GameObject()
         :mState(eState::Active)
     {

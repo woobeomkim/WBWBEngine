@@ -7,6 +7,8 @@ namespace wb
 	class GameObject
 	{
 	public:
+		friend void Destroy(GameObject* gameObject);
+		
 		enum class eState
 		{
 			Active,
@@ -56,16 +58,18 @@ namespace wb
 			else mState = eState::Paused;
 		}
 
-		void Death() { mState = GameObject::eState::Dead; }
 
 		bool IsActive() { return mState == eState::Active; }
 		bool IsDead() { return mState == eState::Dead; }
 
 	private:
 		void initializeTransform();
+		void death() { mState = GameObject::eState::Dead; }
 
 	private:
 		std::vector<Component*> mComponents = {};
 		eState mState;
 	};
+
+	void Destroy(GameObject* gameObject);
 }

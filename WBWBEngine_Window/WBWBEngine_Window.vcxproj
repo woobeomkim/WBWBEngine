@@ -23,6 +23,11 @@
     <ClCompile Include="..\WBWBEngine_Source\wbPlayer.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp" />
     <ClCompile Include="..\WBWBEngine_Source\wbTitleScene.cpp" />
+    <ClCompile Include="Ataho.cpp" />
+    <ClCompile Include="BattleAtaho.cpp" />
+    <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="BattleRinShan.cpp" />
+    <ClCompile Include="BattleSmisu.cpp" />
     <ClCompile Include="RinShan.cpp" />
     <ClCompile Include="Smisu.cpp" />
     <ClCompile Include="wbBattleScene.cpp" />
@@ -30,6 +35,7 @@
     <ClCompile Include="wbLoadingScene.cpp" />
     <ClCompile Include="wbPlayerScript.cpp" />
     <ClCompile Include="wbRect.cpp" />
+    <ClCompile Include="wbStat.cpp" />
     <ClCompile Include="wbStudyScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +44,11 @@
     <ClInclude Include="..\WBWBEngine_Source\wbPlayer.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h" />
     <ClInclude Include="..\WBWBEngine_Source\wbTitleScene.h" />
+    <ClInclude Include="Ataho.h" />
+    <ClInclude Include="BattleAtaho.h" />
+    <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="BattleRinShan.h" />
+    <ClInclude Include="BattleSmisu.h" />
     <ClInclude Include="RinShan.h" />
     <ClInclude Include="Smisu.h" />
     <ClInclude Include="wbBattleScene.h" />
@@ -46,6 +57,7 @@
     <ClInclude Include="wbLoadResources.h" />
     <ClInclude Include="wbPlayerScript.h" />
     <ClInclude Include="wbRect.h" />
+    <ClInclude Include="wbStat.h" />
     <ClInclude Include="wbStudyScene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

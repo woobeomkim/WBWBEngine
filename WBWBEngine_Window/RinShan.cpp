@@ -19,11 +19,24 @@ namespace wb
 	void RinShan::Update()
 	{
 
+		//static float moveDeltaTime = 0.0f;
+		//moveDeltaTime += Time::DeltaTime();
+
+		//if (!prevAtahoPositions.empty() && moveDeltaTime > 0.5F)
+		//{
+		//	moveDeltaTime = 0.0f;
+		//	Vector2 atahoPos = prevAtahoPositions.front().f;
+		//	prevAtahoPositions.pop();
+		//	Transform* tr = GetOwner()->GetComponent<Transform>();
+		//	tr->SetPosition(atahoPos);
+		//}
+
 		if (!mAnimator)
 		{
 			mAnimator = GetOwner()->GetComponent<Animator>();
 		}
 
+		//PlayAnimation(mDir);
 		switch (mState)
 		{
 		case wb::PlayerScript::eState::Idle:
@@ -45,6 +58,24 @@ namespace wb
 	}
 	void RinShan::Render(HDC hdc)
 	{
+	}
+	void RinShan::PlayAnimation(eDir dir)
+	{
+		switch (dir)
+		{
+		case eDir::Left:
+			mAnimator->PlayAnimation(L"LEFTWALK", true);
+			break;
+		case eDir::Right:
+			mAnimator->PlayAnimation(L"RIGHTWALK", true);
+			break;
+		case eDir::Up:
+			mAnimator->PlayAnimation(L"UPWALK", true);
+			break;
+		case eDir::Down:
+			mAnimator->PlayAnimation(L"DOWNWALK", true);
+			break;
+		}
 	}
 	void RinShan::idle()
 	{
@@ -72,84 +103,55 @@ namespace wb
 			mDir = eDir::Down;
 			mAnimator->PlayAnimation(L"DOWNWALK", true);
 		}
-
+		mIsMoving = true;
 
 	}
 	void RinShan::move()
 	{
-		int order = (int)GetOrder();
-		Vector2 target = trail[order - 1];
-		float speed = 0.1f;
+		static float moveDeltaTime = 0.0f;
+		moveDeltaTime += Time::DeltaTime();
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-		
-		float newX = pos.x;
-		float newY = pos.y;
-		float distance = Vector2::Distance(pos, target);
-		float maxFollowDistance = sqrt(mDiffWidth * mDiffWidth + mDiffHeight * mDiffHeight);
-		
-		Vector2 direction = (target - pos).Normalized();
-		pos = pos + direction * mSpeed  * moveDeltaTime;
-		if (maxFollowDistance != distance)
+
+		if (Input::GetKey(eKeycode::Left) || Input::GetKey(eKeycode::Right) || Input::GetKey(eKeycode::Up) || Input::GetKey(eKeycode::Down)) mIsMoving = true;
+		else mIsMoving = false;
+		if (mIsMoving)
 		{
-		//if (Input::GetKey(eKeycode::Left))
-		//{
-		//	mDir = eDir::Left;
-		//	//newX -= mSpeed * Time::DeltaTime();
-		//	pos.x = pos.x - (target.x - pos.x) * speed;
-		//	mIsMoving = true;
-		//}
-		//else if (Input::GetKey(eKeycode::Right))
-		//{
-		//	mDir = eDir::Right;
-		//	//newX += mSpeed * Time::DeltaTime();
-		//	pos.x += (target.x - pos.x) * speed;
-		//	mIsMoving = true;
-		//}
-		//else if (Input::GetKey(eKeycode::Up))
-		//{
-		//	mDir = eDir::Up;
-		//	//newY -= mSpeed * Time::DeltaTime();
-		//	pos.y = pos.y - ((target.y - pos.y)) * speed;
-		//	mIsMoving = true;
-		//}
-		//else if (Input::GetKey(eKeycode::Down))
-		//{
-		//	mDir = eDir::Down;
-		//	//newY += mSpeed * Time::DeltaTime();
-		//	pos.y += ((target.y - pos.y)) * speed;
-		//	mIsMoving = true;
-		//}
-		//else
-		//{
-		//	mIsMoving = false;
-		//}
-		//pos = Vector2(newX, newY);
-		//pos.x += (target.x - pos.x) * speed;
-		//pos.y += (target.y - pos.y) * speed;
+			if (!prevAtahoPositions.empty())
+			{
+				
+					moveDeltaTime = 0.0f;
+
+					if (prevAtahoPositions.size() >= delayFrames)
+					{
+						Vector2 atahoPos = prevAtahoPositions.front().first;
+						mDir = prevAtahoPositions.front().second;
+						prevAtahoPositions.pop();
+						pos = atahoPos;
+						tr->SetPosition(pos);
+						prevRinshanPositions.push(std::make_pair(pos, mDir));
+					}
+			}
 		}
-		trail[(int)GetOrder()] = pos;
-		tr->SetPosition(pos);
 
 		if (!mIsMoving)
 		{
 			switch (mDir)
 			{
 			case eDir::Left:
-				mAnimator->PlayAnimation(L"LEFTWALK_IDLE", true);
+				mAnimator->PlayAnimation(L"LEFTWALK_IDLE", false);
 				break;
 			case eDir::Right:
-				mAnimator->PlayAnimation(L"RIGHTWALK_IDLE", true);
+				mAnimator->PlayAnimation(L"RIGHTWALK_IDLE", false);
 				break;
 			case eDir::Up:
-				mAnimator->PlayAnimation(L"UPWALK_IDLE", true);
+				mAnimator->PlayAnimation(L"UPWALK_IDLE", false);
 				break;
 			case eDir::Down:
-				mAnimator->PlayAnimation(L"DOWNWALK_IDLE", true);
+				mAnimator->PlayAnimation(L"DOWNWALK_IDLE", false);
 				break;
 			}
 			mState = eState::Idle;
 		}
 	}
-
 }
