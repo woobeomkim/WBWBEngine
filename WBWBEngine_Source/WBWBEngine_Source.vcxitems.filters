@@ -60,6 +60,10 @@
       <Filter>Component</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollisionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
@@ -130,6 +134,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
       <Filter>Layer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollisionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

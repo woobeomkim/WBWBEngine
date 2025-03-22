@@ -3,7 +3,6 @@
 
 namespace wb
 {
-	class Player;
 	class Monster;
     class BattleScene  : public Scene
     {
@@ -18,11 +17,8 @@ namespace wb
 
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
-    
+
 	private:
-		Player* mAtaho;
-		Player* mRinShan;
-		Player* mSmisu;
-		std::map<std::wstring, Monster*> mMonster;
+		
 	};
 }

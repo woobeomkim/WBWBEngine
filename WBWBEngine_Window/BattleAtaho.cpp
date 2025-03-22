@@ -4,11 +4,7 @@
 #include "wbInput.h"
 #include "wbAnimation.h"
 #include "..\\WBWBEngine_Window\\BattleManager.h"
-
-void test()
-{
-	int a = 0;
-}
+#include "BattleBase.h"
 
 namespace wb
 {
@@ -16,7 +12,9 @@ namespace wb
 		:Component(eComponentType::BattleAtaho)
 		, mState(State::Idle)
 		, atahoAnimator(nullptr)
+		, mBattleBase(nullptr)
 	{
+		mBattleBase = new BattleBase();
 	}
 	BattleAtaho::~BattleAtaho()
 	{
@@ -26,7 +24,7 @@ namespace wb
 	}
 	void BattleAtaho::Update()
 	{
-		if (!atahoAnimator)
+		/*if (!atahoAnimator)
 			atahoAnimator = GetOwner()->GetComponent<Animator>();
 
 		switch (mState)
@@ -77,7 +75,7 @@ namespace wb
 			hopoGwon();
 			break;
 
-		}
+		}*/
 	}
 	void BattleAtaho::LateUpdate()
 	{
@@ -131,11 +129,6 @@ namespace wb
 
 		Animation* anim = atahoAnimator->GetActiveAnimation();
 		
-		std::function<void()> f;
-		f = test;
-		f();
-		BattleManager::mActionQueue.push(f);
-		BattleManager::mActionQueue.front()();
 		mState = State::Idle;
 	}
 	void BattleAtaho::rotateKick()

@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <bitset>
 #include <ctime>
 #include <string>
 #include <assert.h>

@@ -17,7 +17,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbEnums.h" />
@@ -43,8 +47,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbBullet.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)wbGameObject.cpp" />

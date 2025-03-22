@@ -13,6 +13,8 @@ namespace wb
 		static void Update();
 		static void Render(HDC hdc);
 
+		static void WaitForSeconds(float seconds);
+
 		__forceinline static float DeltaTime() { return deltaTime; }
 		static float GetFPS() { return FPS; }
 

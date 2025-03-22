@@ -35,6 +35,9 @@
     <Filter Include="BattleScene\Player">
       <UniqueIdentifier>{a4a8a69c-9c1f-4ae6-8dea-7c9198e9e26d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Move">
+      <UniqueIdentifier>{589481d9-3d2e-43ad-844e-089e6af7791f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\WBWBEngine_Source\wbPlayScene.cpp">
@@ -77,10 +80,16 @@
     <ClCompile Include="BattleSmisu.cpp">
       <Filter>BattleScene\Player</Filter>
     </ClCompile>
-    <ClCompile Include="wbStat.cpp">
-      <Filter>BattleScene\Player</Filter>
+    <ClCompile Include="BattleManager.cpp">
+      <Filter>BattleScene</Filter>
     </ClCompile>
-    <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Move.cpp">
+      <Filter>Move</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveBase.cpp">
+      <Filter>Move</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -129,9 +138,15 @@
     <ClInclude Include="BattleSmisu.h">
       <Filter>BattleScene\Player</Filter>
     </ClInclude>
-    <ClInclude Include="wbStat.h">
-      <Filter>BattleScene\Player</Filter>
+    <ClInclude Include="BattleManager.h">
+      <Filter>BattleScene</Filter>
     </ClInclude>
-    <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="Move.h">
+      <Filter>Move</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveBase.h">
+      <Filter>Move</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleBase.h" />
   </ItemGroup>
 </Project>

@@ -37,4 +37,13 @@ namespace wb
 		swprintf_s(str, L"DT : %f FPS : %d", deltaTime, FPS);
 		TextOut(hdc, 10, 10, str, wcslen(str));
 	}
+	void Time::WaitForSeconds(float seconds)
+	{
+		float currentTime = 0.0f;
+
+		while (currentTime <= seconds)
+		{
+			currentTime += Time::DeltaTime();
+		}
+	}
 }

@@ -5,6 +5,7 @@
 #include "wbTime.h"
 #include "wbSceneManager.h"
 #include "wbResources.h"
+#include "wbCollisionManager.h"
 
 namespace wb
 {
@@ -30,6 +31,7 @@ namespace wb
 
 		Input::Initialize();
 		Time::Initialize();
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -37,14 +39,15 @@ namespace wb
 	{
 		Input::Update();
 		Time::Update();
+		CollisionManager::Update();
 		SceneManager::Update();
-
 	}
 
 	void Application::Render()
 	{
 		Rectangle(mBackHdc, -1, -1, mWidth, mHeight);
 		Time::Render(mBackHdc);
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHdc, 0, 0, SRCCOPY);
@@ -53,6 +56,7 @@ namespace wb
 	void Application::LateUpdate()
 	{
 		Input::LateUpdate();
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 

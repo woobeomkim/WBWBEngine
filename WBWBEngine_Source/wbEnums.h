@@ -22,9 +22,10 @@ namespace wb
 	enum class eComponentType
 	{
 		Transform,
+		Collider,
+		Script,
 		SpriteRenderer,
 		Animator,
-		Script,
 		Ataho,
 		Smisu,
 		RinShan,
@@ -42,6 +43,13 @@ namespace wb
 		AudioClip,
 		Animation,
 		Prefab,
+		End,
+	};
+
+	enum class eColliderType
+	{
+		Circle2D,
+		Rect2D,
 		End,
 	};
 }

@@ -38,7 +38,8 @@ namespace wb
 
 		Texture::eTextureType type = mTexture->GetTextureType();
 
-		pos = mainCamera->CalculatePosition(pos);
+		if(mainCamera)
+			pos = mainCamera->CalculatePosition(pos);
 
 		if (type == Texture::eTextureType::Bmp)
 		{

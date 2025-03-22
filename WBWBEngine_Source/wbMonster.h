@@ -16,6 +16,6 @@ namespace wb
 		void LateUpdate();
 
 	private:
-	
+		class BattleBase* mBase;
 	};
 }

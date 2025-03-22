@@ -5,7 +5,8 @@ namespace wb
 {
 	class BattleScene;
 	class Animator;
-	
+	class BattleBase;
+
 	enum State
 	{
 		Idle,
@@ -36,6 +37,10 @@ namespace wb
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		BattleBase* GetBattleBase()
+		{
+			return mBattleBase;
+		}
 	private:
 		void idle();
 		void punch();
@@ -56,6 +61,7 @@ namespace wb
 	private:
 		Animator* atahoAnimator;
 		State mState;
+		BattleBase* mBattleBase;
 
 		friend class BattleScene;
     };
