@@ -14,6 +14,7 @@ namespace wb
 
     GameObject::GameObject()
         :mState(eState::Active)
+        ,mSpriteSize(Vector2::One)
     {
         initializeTransform();
     }

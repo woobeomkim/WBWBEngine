@@ -25,12 +25,11 @@ namespace wb
 	}
 	void BattleScene::Initialize()
 	{
-		BattleManager::Initialize();
-		// 640 , 480 640//5 480 /4 
 		
-		// 45 68
- 		
 
+		BattleManager::Initialize();
+		
+		BattleManager::mBattleState = BattleManager::BattleState::Start;
 		/*
 		* Resources::Load<Texture>(L"ATAHO_BATTLE_IDLE",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_IDLE.bmp");
 		Resources::Load<Texture>(L"ATAHO_BATTLE_PUNCH",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_PUNCH.bmp");
@@ -49,23 +48,20 @@ namespace wb
 	}
 	void BattleScene::Update()
 	{
-		// 1/4 ?? 160 80
+		//// 1/4 ?? 160 80
 
-		Animator* atahoAnimator = BattleManager::GetAtaho()->GetComponent<Animator>();
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FAINTING");
-		Time::WaitForSeconds(10.0f);
-		//atahoAnimator->PlayAnimation(L"BATTLE_IDLE");
-		Time::WaitForSeconds(1.0f);
-		
-
+		//Animator* atahoAnimator = BattleManager::GetAtaho()->GetComponent<Animator>();
+		//atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FAINTING");
+		//Time::WaitForSeconds(10.0f);
+		////atahoAnimator->PlayAnimation(L"BATTLE_IDLE");
+		//Time::WaitForSeconds(1.0f);
+		//
 		Scene::Update();
+		BattleManager::Update();
 	}
 	void BattleScene::LateUpdate()
 	{
-		Animator* atahoAnimator = BattleManager::GetAtaho()->GetComponent<Animator>();
-		Time::WaitForSeconds(1.0f);
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_WIN");
-		Scene::LateUpdate();
+		BattleManager::LateUpdate();
 	}
 	void BattleScene::Render(HDC hdc)
 	{

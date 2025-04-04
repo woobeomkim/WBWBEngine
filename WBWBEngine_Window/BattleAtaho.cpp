@@ -5,16 +5,21 @@
 #include "wbAnimation.h"
 #include "..\\WBWBEngine_Window\\BattleManager.h"
 #include "BattleBase.h"
+#include "MoveBase.h"
+#include "Punch.h"
 
 namespace wb
 {
 	BattleAtaho::BattleAtaho()
 		:Component(eComponentType::BattleAtaho)
-		, mState(State::Idle)
+		//, mState(State::Idle)
 		, atahoAnimator(nullptr)
 		, mBattleBase(nullptr)
 	{
 		mBattleBase = new BattleBase();
+		Punch* move = new Punch(L"Punch",10,10,10);
+		moves.insert(std::make_pair(L"Punch", move));
+
 	}
 	BattleAtaho::~BattleAtaho()
 	{
@@ -24,6 +29,7 @@ namespace wb
 	}
 	void BattleAtaho::Update()
 	{
+		
 		/*if (!atahoAnimator)
 			atahoAnimator = GetOwner()->GetComponent<Animator>();
 
@@ -86,7 +92,7 @@ namespace wb
 	}
 	void BattleAtaho::idle()
 	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_IDLE",false);
+	/*	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_IDLE",false);
 
 		Animation* anim = atahoAnimator->GetActiveAnimation();
 
@@ -120,85 +126,85 @@ namespace wb
 		else if (Input::GetKeyDown(eKeycode::D))
 			mState = State::HogyukGwon;
 		else if (Input::GetKeyDown(eKeycode::F))
-			mState = State::HopoGwon;
+			mState = State::HopoGwon;*/
 	}
-	void BattleAtaho::punch()
-	{
-		
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_PUNCH", false);
+	//void BattleAtaho::punch()
+	//{
+	//	
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_PUNCH", false);
 
-		Animation* anim = atahoAnimator->GetActiveAnimation();
-		
-		mState = State::Idle;
-	}
-	void BattleAtaho::rotateKick()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROTATEKICK",false);
-		
-		mState = State::Idle;
-	}
-	void BattleAtaho::defense()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::drinking()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_DRINKING", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::sleep()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_SLEEP", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::guard()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::beAttacked()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_BEATTACKED", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::flyingKick()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FLYINGKICK", false);
-		mState = State::Idle;
+	//	Animation* anim = atahoAnimator->GetActiveAnimation();
+	//	
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::rotateKick()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROTATEKICK",false);
+	//	
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::defense()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::drinking()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_DRINKING", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::sleep()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_SLEEP", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::guard()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::beAttacked()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_BEATTACKED", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::flyingKick()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FLYINGKICK", false);
+	//	mState = State::Idle;
 
-	}
-	void BattleAtaho::fainting()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FAINTING", true);
-		//mState = State::Idle;
+	//}
+	//void BattleAtaho::fainting()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FAINTING", true);
+	//	//mState = State::Idle;
 
-	}
-	void BattleAtaho::win()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_WIN", false);
-		mState = State::Idle;
+	//}
+	//void BattleAtaho::win()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_WIN", false);
+	//	mState = State::Idle;
 
-	}
-	void BattleAtaho::legKick()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_LEGKICK", false);
-		mState = State::Idle;
+	//}
+	//void BattleAtaho::legKick()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_LEGKICK", false);
+	//	mState = State::Idle;
 
-	}
-	void BattleAtaho::roar()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROAR", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::hogyukGwon()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOGYUKGWON", false);
-		mState = State::Idle;
-	}
-	void BattleAtaho::hopoGwon()
-	{
-		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOPOGWON", false);
-		mState = State::Idle;
-	}
+	//}
+	//void BattleAtaho::roar()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROAR", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::hogyukGwon()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOGYUKGWON", false);
+	//	mState = State::Idle;
+	//}
+	//void BattleAtaho::hopoGwon()
+	//{
+	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOPOGWON", false);
+	//	mState = State::Idle;
+	//}
 }

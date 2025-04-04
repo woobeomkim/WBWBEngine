@@ -4,6 +4,7 @@
 namespace wb
 {
 	class Player;
+	class Animator;
 	class BattleManager
 	{
 	public:
@@ -20,7 +21,6 @@ namespace wb
 		enum class BattleAction
 		{
 			Move,
-			UseItem,
 			Run
 		};
 		BattleManager();
@@ -37,23 +37,26 @@ namespace wb
 		static Player* GetAtaho() { return mAtaho; }
 
 	private:
-		void startBattle();
-		void actionSelection();
-		void moveSelection();
-		void RunTurns();
-		void enemyMove();
-		void runMove();
-		void battleOver();
+		static void startBattle();
+		static void actionSelection();
+		static void moveSelection();
+		static void RunTurns();
+		static void enemyMove();
+		static void runMove();
+		static void battleOver();
 	private:
 		static void initMonster();
 		static void initAtaho();
-	private:
-		BattleState mBattleState;
-		BattleAction mBattleAction;
-		int currentAction;
-		int currentMove;
+	public:
+		static BattleState mBattleState;
+		static BattleAction mBattleAction;
+		static int currentAction;
+		static int currentMove;
 		static bool mIsturn;
 		static std::map<std::wstring, class Monster*> mMonster;
+		static Animator* atahoAnimator;
+		static Animator* monsterAnimator;
+
 		static Player* mAtaho;
 		static Player* mRinShan;
 		static Player* mSmisu;

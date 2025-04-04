@@ -83,13 +83,13 @@
     <ClCompile Include="BattleManager.cpp">
       <Filter>BattleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp">
-      <Filter>Move</Filter>
-    </ClCompile>
     <ClCompile Include="MoveBase.cpp">
       <Filter>Move</Filter>
     </ClCompile>
     <ClCompile Include="BattleBase.cpp" />
+    <ClCompile Include="Punch.cpp">
+      <Filter>Move</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -141,12 +141,12 @@
     <ClInclude Include="BattleManager.h">
       <Filter>BattleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Move.h">
-      <Filter>Move</Filter>
-    </ClInclude>
     <ClInclude Include="MoveBase.h">
       <Filter>Move</Filter>
     </ClInclude>
     <ClInclude Include="BattleBase.h" />
+    <ClInclude Include="Punch.h">
+      <Filter>Move</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

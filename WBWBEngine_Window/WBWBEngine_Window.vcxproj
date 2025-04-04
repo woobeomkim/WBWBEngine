@@ -29,8 +29,8 @@
     <ClCompile Include="BattleManager.cpp" />
     <ClCompile Include="BattleRinShan.cpp" />
     <ClCompile Include="BattleSmisu.cpp" />
-    <ClCompile Include="Move.cpp" />
     <ClCompile Include="MoveBase.cpp" />
+    <ClCompile Include="Punch.cpp" />
     <ClCompile Include="RinShan.cpp" />
     <ClCompile Include="Smisu.cpp" />
     <ClCompile Include="wbBattleScene.cpp" />
@@ -52,8 +52,8 @@
     <ClInclude Include="BattleManager.h" />
     <ClInclude Include="BattleRinShan.h" />
     <ClInclude Include="BattleSmisu.h" />
-    <ClInclude Include="Move.h" />
     <ClInclude Include="MoveBase.h" />
+    <ClInclude Include="Punch.h" />
     <ClInclude Include="RinShan.h" />
     <ClInclude Include="Smisu.h" />
     <ClInclude Include="wbBattleScene.h" />

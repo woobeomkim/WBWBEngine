@@ -9,13 +9,23 @@
 #include "wbPlayer.h"
 #include "BattleAtaho.h"
 #include "MoveBase.h"
-#include "Move.h"
 #include "BattleBase.h"
+#include "wbInput.h"
+#include "wbTime.h"
 
 namespace wb
 {
 	std::queue<std::function<void()>> BattleManager::mActionQueue = {};
 	std::map<std::wstring, Monster*> BattleManager::mMonster = {};
+
+	BattleManager::BattleState BattleManager::mBattleState;
+	BattleManager::BattleAction BattleManager::mBattleAction;
+	int BattleManager::currentAction;
+	int BattleManager::currentMove;
+	bool BattleManager::mIsturn;
+
+	Animator* BattleManager::atahoAnimator = nullptr;
+	Animator* BattleManager::monsterAnimator = nullptr;
 
 	Player* BattleManager::mAtaho = nullptr;
 	Player* BattleManager::mRinShan = nullptr;
@@ -31,9 +41,33 @@ namespace wb
 	{
 		initMonster();
 		initAtaho();
+
+		atahoAnimator = mAtaho->GetComponent<Animator>();
+		monsterAnimator = mMonster[L"MONKEY"]->GetComponent<Animator>();
 	}
 	void BattleManager::Update()
 	{
+		switch (mBattleState)
+		{
+		case wb::BattleManager::BattleState::Start:
+			startBattle();
+			break;
+		case wb::BattleManager::BattleState::ActionSelection:
+			actionSelection();
+			break;
+		case wb::BattleManager::BattleState::MoveSelection:
+			moveSelection();
+			break;
+		case wb::BattleManager::BattleState::RunningTurn:
+			RunTurns();
+			break;
+		case wb::BattleManager::BattleState::Busy:
+			break;
+		case wb::BattleManager::BattleState::BattleOver:
+			break;
+		default:
+			break;
+		}
 	}
 	void BattleManager::LateUpdate()
 	{
@@ -46,18 +80,49 @@ namespace wb
 	}
 	void BattleManager::startBattle()
 	{
+		BattleManager::mMonster[L"MONKEY"]->GetComponent<Animator>()->PlayAnimation(L"MONKEY_IDLE");
+		BattleManager::mAtaho->GetComponent<Animator>()->PlayAnimation(L"ATAHO_BATTLE_IDLE");
+
+		mBattleState = BattleState::ActionSelection;
 	}
 	void BattleManager::actionSelection()
 	{
+		if (Input::GetKeyDown(eKeycode::Right))
+			currentAction++;
+		else if (Input::GetKeyDown(eKeycode::Left))
+			currentAction--;
+
+
+		if(Input::GetKeyDown(eKeycode::Z))
+			mBattleState = BattleState::MoveSelection;
 	}
 	void BattleManager::moveSelection()
 	{
+		if (Input::GetKeyDown(eKeycode::Down))
+			currentMove++;
+		else if (Input::GetKeyDown(eKeycode::Up))
+			currentMove--;
+
+		if(Input::GetKeyDown(eKeycode::Z))
+			mBattleState = BattleState::RunningTurn;
+		else if(Input::GetKeyDown(eKeycode::X))
+			mBattleState = BattleState::ActionSelection;
+
 	}
 	void BattleManager::RunTurns()
 	{
+		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_PUNCH", false);
+		
+			atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_IDLE",false);
+
+			enemyMove();
+			if(Input::GetKeyDown(eKeycode::Z))
+			mBattleState = BattleState::Start;
+		
 	}
 	void BattleManager::enemyMove()
 	{
+		BattleManager::mMonster[L"MONKEY"]->GetComponent<Animator>()->PlayAnimation(L"MONKEY_ATTACK");
 	}
 	void BattleManager::runMove()
 	{
@@ -67,7 +132,7 @@ namespace wb
 	}
 	void BattleManager::initMonster()
 	{
-		Monster* monkey = Instantiate<Monster>(eLayerType::Player, Vector2(320.0f, 240.0f));
+		Monster* monkey = Instantiate<Monster>(eLayerType::Player, Vector2(540.0f, 240.0f));
 		Texture* tex = Resources::Find<Texture>(L"MONKEY");
 		Animator* animator = monkey->AddComponent<Animator>();
 		animator->CreateAnimation(L"MONKEY_IDLE", tex, Vector2(0, 0), Vector2(40.0f, 64.0f), Vector2::Zero, 1, 0.1f);
@@ -83,25 +148,14 @@ namespace wb
 		BattleAtaho* atahoScript = mAtaho->AddComponent<BattleAtaho>();
 
 		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_IDLE");
-		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_IDLE", atahoTex, Vector2(0.0f, 0.0f), Vector2(45.0f, 63.0f), Vector2::Zero, 1, 2.0f);
+		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_IDLE", atahoTex, Vector2(0.0f, 0.0f), Vector2(45.0f, 63.0f), Vector2::Zero, 1, 1.0f);
 		
 
 		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_PUNCH");
-		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_PUNCH", atahoTex, Vector2(0.0f, 0.0f), Vector2(67.5f, 61.0f), Vector2::Zero, 2, 5.0f);
-
-		// 임시값
-		MoveBase* moveBase = new MoveBase();
-		moveBase->SetAnimation(atahoAnimator->FindAnimation(L"ATAHO_BATTLE_PUNCH"));
-		moveBase->SetName(L"정권");
-		moveBase->SetPower(10);
-		moveBase->SetPriority(1);
-		moveBase->SetAccuracy(100);
-		
-		BattleBase* atahoBattleBase = atahoScript->GetBattleBase();
-		atahoBattleBase->AddMove(L"정권", new Move(moveBase));
+		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_PUNCH", atahoTex, Vector2(0.0f, 0.0f), Vector2(67.5f, 61.0f), Vector2::Zero, 2, 1.0f);
 
 		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_ROTATEKICK");
-		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_ROTATEKICK", atahoTex, Vector2(0.0f, 0.0f), Vector2(70.0f, 101.0f), Vector2::Zero, 4, 3.0f);
+		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_ROTATEKICK", atahoTex, Vector2(0.0f, 0.0f), Vector2(70.0f, 101.0f), Vector2::Zero, 4, 1.0f);
 
 		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_SLEEP");
 		atahoAnimator->CreateAnimation(L"ATAHO_BATTLE_SLEEP", atahoTex, Vector2(0.0f, 0.0f), Vector2(62.0f, 49.0f), Vector2::Zero, 3, 0.1f);

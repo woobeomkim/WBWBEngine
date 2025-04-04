@@ -10,9 +10,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbBullet.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTime.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -44,7 +41,7 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbResources.cpp">
-      <Filter>Resource\Resources</Filter>
+      <Filter>Manager\Resources</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbTexture.cpp">
       <Filter>Resource\Texture</Filter>
@@ -52,18 +49,33 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)wbScript.cpp">
       <Filter>Component</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollider.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimator.cpp">
-      <Filter>Component</Filter>
+      <Filter>Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbSceneManager.cpp">
+      <Filter>Manager\SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbAnimation.cpp">
-      <Filter>Component</Filter>
+      <Filter>Resource\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollider.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCamera.cpp">
+      <Filter>Component\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbCollisionManager.cpp">
+      <Filter>Manager\CollisionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbRenderer.cpp">
+      <Filter>MainCamera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
@@ -77,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbBullet.h">
       <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h">
-      <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTime.h">
       <Filter>Utils</Filter>
@@ -115,7 +124,7 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbResources.h">
-      <Filter>Resource\Resources</Filter>
+      <Filter>Manager\Resources</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbTexture.h">
       <Filter>Resource\Texture</Filter>
@@ -123,21 +132,36 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScript.h">
       <Filter>Component</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbRenderer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimator.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimation.h">
-      <Filter>Component</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)wbLayer.h">
       <Filter>Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollider.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbBoxCollider2D.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCircleCollider2D.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollider.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimator.h">
+      <Filter>Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbSceneManager.h">
+      <Filter>Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbAnimation.h">
+      <Filter>Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCamera.h">
+      <Filter>Component\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbCollisionManager.h">
+      <Filter>Manager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbRenderer.h">
+      <Filter>MainCamera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -164,11 +188,35 @@
     <Filter Include="Common">
       <UniqueIdentifier>{5b6c694c-da0f-4de3-a366-ae505d045a5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource\Resources">
-      <UniqueIdentifier>{a7506b1b-5468-4ed9-a3e4-c01fddc51da8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{0952d8b5-2f97-4405-9a30-6cd669760dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider">
+      <UniqueIdentifier>{ed7529de-1ba8-4170-aaa5-cecbf0cb0ea4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{3d3c1bb0-9c1c-42e5-945a-6f07f01236b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{9b9f0e04-113f-440c-a15d-83a61ecbb121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\Resources">
+      <UniqueIdentifier>{a7506b1b-5468-4ed9-a3e4-c01fddc51da8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\SceneManager">
+      <UniqueIdentifier>{1d46a19a-4e37-4c6f-9582-dd755fd68dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{0330262c-ca92-49bd-a1cc-0eda087db8aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Camera">
+      <UniqueIdentifier>{4fb35f94-9fff-4552-b9e5-85e8c8e9efff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\CollisionManager">
+      <UniqueIdentifier>{dcb0f921-d27b-4820-b94b-b9e593c942ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainCamera">
+      <UniqueIdentifier>{b399ba83-ef02-4738-9892-3639925dbde5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@
 #include "wbSceneManager.h"
 #include "wbGameObject.h"
 #include "wbTransform.h"
+#include  <cmath>
+
 namespace wb
 {
 	std::bitset<(UINT)eLayerType::Max> CollisionManager::mCollisionLayerMatrix[(UINT)eLayerType::Max] = {};
@@ -156,18 +158,18 @@ namespace wb
 			|| (leftType == eColliderType::Rect2D && rightType == eColliderType::Circle2D))
 		{
 			Vector2 circleCenter;
-			float circleRaidus;
+			float circleRadius;
 
 			// 1. 원의 중심과 반지름찾기
 			if (leftType == eColliderType::Circle2D)
 			{
-				circleCenter = leftPos - (leftSize / 2.0f);
-				circleRaidus = leftSize.x / 2.0f;
+				circleCenter = leftPos + (leftSize / 2.0f);
+				circleRadius = leftSize.x / 2.0f;
 			}
 			else
 			{
-				circleCenter = rightPos - (rightSize / 2.0f);
-				circleRaidus = rightSize.x / 2.0f;
+				circleCenter = rightPos + (rightSize / 2.0f);
+				circleRadius = rightSize.x / 2.0f;
 			}
 
 			float rectLeft;
@@ -190,15 +192,18 @@ namespace wb
 				rectBottom = rightPos.y + rightSize.y;
 			}
 
+
 			// 3. 원의 중심에서 가장 가까운 사각형 내부의점 찾기
-			float closestX = std::clamp(circleCenter.x, rectLeft, rectRight);
-			float closestY = std::clamp(circleCenter.y, rectTop, rectBottom);
+			float closestX = std::clamp(circleCenter.x, std::fmin(rectLeft,rectTop), std::fmax(rectRight,rectLeft));
+			float closestY = std::clamp(circleCenter.y, std::fmin(rectTop,rectLeft), std::fmax(rectBottom,rectTop));
 
 			// 4. 원의중심과 가장가까운 점의 거리찾기
 			float distance = (circleCenter - Vector2(closestX, closestY)).length();
 
+
+			
 			// 5. 거리가 반지름보다 작으면 충돌
-			if (distance <= circleRaidus)
+			if (distance - circleRadius <= std::numeric_limits<float>::epsilon())
 				return true;
 		}
 

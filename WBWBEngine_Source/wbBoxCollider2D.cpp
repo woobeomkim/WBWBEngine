@@ -26,13 +26,13 @@ namespace wb
 	{
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPosition();
-
+	
 		if (mainCamera)
 			pos = mainCamera->CalculatePosition(pos);
 
 		Vector2 offset = GetOffset();
 
-		HBRUSH transparentBrush = CreateSolidBrush(NULL_BRUSH);
+		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
 
 		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
@@ -40,8 +40,8 @@ namespace wb
 	
 		Rectangle(hdc, pos.x + offset.x
 			, pos.y + offset.y
-			, pos.x + offset.x + GetSize().x
-			, pos.y + offset.y + GetSize().y);
+			, pos.x + offset.x + GetSize().x * 48.0f
+			, pos.y + offset.y + GetSize().y * 64.0f);
 
 		SelectObject(hdc, oldBrush);
 		SelectObject(hdc, oldPen);

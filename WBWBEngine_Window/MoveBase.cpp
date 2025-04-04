@@ -2,11 +2,11 @@
 
 namespace wb
 {
-	MoveBase::MoveBase()
-		: mName{}
-		, mPower(0)
-		, mAccuracy(0)
-		, mPriority(0)
+	MoveBase::MoveBase(std::wstring moveName, int moveCost, int movePower, int moveRange)
+		: mName(moveName)
+		, mPower(movePower)
+		, mCost(moveCost)
+		, mRange(moveRange)
 	{
 	}
 	MoveBase::~MoveBase()

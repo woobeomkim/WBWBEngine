@@ -14,6 +14,8 @@
 #include "..\\WBWBEngine_Window\\Smisu.h"
 #include "..\\WBWBEngine_Window\RinShan.h"
 #include "..\\WBWBEngine_Window\Ataho.h"
+#include "wbBoxCollider2D.h"
+#include "wbCollider.h"
 
 namespace wb
 {
@@ -34,7 +36,10 @@ namespace wb
 		
 		player->SetLeader(nullptr);
 		Transform* trAt = player->GetComponent<Transform>();
-	
+		BoxCollider2D* atCol = player->AddComponent<BoxCollider2D>();
+		player->SetSpriteSize(Vector2(48.0f, 64.0f));
+		Vector2 spriteSize = player->GetSpriteSize();
+		atCol->SetOffset(spriteSize / 2.0f * -1.0f);
 
 		animator->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 		
@@ -58,7 +63,10 @@ namespace wb
 		tex = Resources::Find<Texture>(L"PLAYER_RS");
 		Animator* animatorRs = playerRs->AddComponent<Animator>();
 		RinShan* rs = playerRs->AddComponent<RinShan>();
-		
+		BoxCollider2D* rsCol = playerRs->AddComponent<BoxCollider2D>();
+		playerRs->SetSpriteSize(Vector2(48.0f, 64.0f));
+		spriteSize = playerRs->GetSpriteSize();
+		rsCol->SetOffset(spriteSize / 2.0f * -1.0f);
 		
 		animatorRs->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 
@@ -82,6 +90,11 @@ namespace wb
 		tex = Resources::Find<Texture>(L"PLAYER_SM");
 		Animator* animatorSm = playerSm->AddComponent<Animator>();
 		Smisu* sm = playerSm->AddComponent<Smisu>();
+		BoxCollider2D* smCol = playerSm->AddComponent<BoxCollider2D>();
+		playerSm->SetSpriteSize(Vector2(48.0f, 64.0f));
+		spriteSize = playerSm->GetSpriteSize();
+		smCol->SetOffset(spriteSize / 2.0f * -1.0f);
+
 	
 		animatorSm->CreateAnimation(L"DOWNWALK", tex, Vector2(0, 0), Vector2(48.0f, 64.0f), Vector2::Zero, 5, 0.1f);
 

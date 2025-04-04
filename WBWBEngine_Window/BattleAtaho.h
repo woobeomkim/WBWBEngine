@@ -7,25 +7,25 @@ namespace wb
 	class Animator;
 	class BattleBase;
 
-	enum State
-	{
-		Idle,
-		Punch,
-		RotateKick,
-		Defense,
-		Drinking,
-		Sleep,
-		Guard,
-		BeAttacked,
-		FlyingKick,
-		Fainting,
-		Win,
-		LegKick,
-		Roar,
-		HogyukGwon,
-		HopoGwon
+	//enum State
+	//{
+	//	Idle,
+	//	Punch,
+	//	RotateKick,
+	//	Defense,
+	//	Drinking,
+	//	Sleep,
+	//	Guard,
+	//	BeAttacked,
+	//	FlyingKick,
+	//	Fainting,
+	//	Win,
+	//	LegKick,
+	//	Roar,
+	//	HogyukGwon,
+	//	HopoGwon
 
-	};
+	//};
 
     class BattleAtaho : public Component
     {
@@ -60,8 +60,9 @@ namespace wb
 
 	private:
 		Animator* atahoAnimator;
-		State mState;
+		//State mState;
 		BattleBase* mBattleBase;
+		std::map<std::wstring, class MoveBase*> moves;
 
 		friend class BattleScene;
     };

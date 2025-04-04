@@ -3,13 +3,14 @@
 
 namespace wb
 {
-	class Animation;
 	class GameObject;
 	class MoveBase
 	{
 	public:
-		MoveBase();
+		MoveBase(std::wstring moveName, int moveCost, int movePower,int moveRange);
 		~MoveBase();
+
+		virtual void Execute(GameObject* sourceUnit,GameObject* targetUnit) = 0;
 
 		void SetName(const std::wstring& name)
 		{
@@ -29,6 +30,16 @@ namespace wb
 		void SetPower(int power)
 		{
 			mPower = power;
+		}
+
+		void SetRange(int range)
+		{
+			mRange = range;
+		}
+
+		int GetRange()
+		{
+			return mRange;
 		}
 
 		void SetAccuracy(int accuracy)
@@ -51,21 +62,14 @@ namespace wb
 			return mPriority;
 		}
 
-		void SetAnimation(Animation* anim)
-		{
-			mAnimation = anim;
-		}
 
-		Animation* GetAnimation()
-		{
-			return mAnimation;
-		}
-	private:
+	protected:
 		std::wstring mName;
+		int mCost;
 		int mPower;
+		int mRange;
 		int mAccuracy;
 		int mPriority;
 
-		Animation* mAnimation;
 	};
 }
