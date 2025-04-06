@@ -71,15 +71,6 @@
     <ClCompile Include="Smisu.cpp" />
     <ClCompile Include="RinShan.cpp" />
     <ClCompile Include="Ataho.cpp" />
-    <ClCompile Include="BattleAtaho.cpp">
-      <Filter>BattleScene\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleRinShan.cpp">
-      <Filter>BattleScene\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleSmisu.cpp">
-      <Filter>BattleScene\Player</Filter>
-    </ClCompile>
     <ClCompile Include="BattleManager.cpp">
       <Filter>BattleScene</Filter>
     </ClCompile>
@@ -89,6 +80,9 @@
     <ClCompile Include="BattleBase.cpp" />
     <ClCompile Include="Punch.cpp">
       <Filter>Move</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleAtaho.cpp">
+      <Filter>BattleScene\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,15 +123,6 @@
     <ClInclude Include="Smisu.h" />
     <ClInclude Include="RinShan.h" />
     <ClInclude Include="Ataho.h" />
-    <ClInclude Include="BattleAtaho.h">
-      <Filter>BattleScene\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleRinShan.h">
-      <Filter>BattleScene\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleSmisu.h">
-      <Filter>BattleScene\Player</Filter>
-    </ClInclude>
     <ClInclude Include="BattleManager.h">
       <Filter>BattleScene</Filter>
     </ClInclude>
@@ -147,6 +132,9 @@
     <ClInclude Include="BattleBase.h" />
     <ClInclude Include="Punch.h">
       <Filter>Move</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleAtaho.h">
+      <Filter>BattleScene\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

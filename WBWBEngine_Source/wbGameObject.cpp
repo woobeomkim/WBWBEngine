@@ -14,7 +14,7 @@ namespace wb
 
     GameObject::GameObject()
         :mState(eState::Active)
-        ,mSpriteSize(Vector2::One)
+		, mLayerType(eLayerType::None)
     {
         initializeTransform();
     }
@@ -67,7 +67,7 @@ namespace wb
         {
             if (comp == nullptr)
                 return;
-            comp->Render(hdc);
+             comp->Render(hdc);
         }
      
     }

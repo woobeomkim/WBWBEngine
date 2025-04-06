@@ -86,6 +86,12 @@ namespace wb
 		mLayers[(UINT)type]->AddGameObject(obj);
 	}
 
+	void Scene::EraseGameObject(GameObject* gameObj)
+	{
+		eLayerType layerType = gameObj->GetLayerType();
+		mLayers[(UINT)layerType]->EraseGameObject(gameObj);
+	}
+
 	void Scene::createLayers()
 	{
 		mLayers.resize((UINT)eLayerType::Max);

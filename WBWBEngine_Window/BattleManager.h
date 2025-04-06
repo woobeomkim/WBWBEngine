@@ -44,9 +44,7 @@ namespace wb
 		static void enemyMove();
 		static void runMove();
 		static void battleOver();
-	private:
-		static void initMonster();
-		static void initAtaho();
+
 	public:
 		static BattleState mBattleState;
 		static BattleAction mBattleAction;

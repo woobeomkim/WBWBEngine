@@ -62,9 +62,8 @@ namespace wb
 		bool IsActive() { return mState == eState::Active; }
 		bool IsDead() { return mState == eState::Dead; }
 
-		void SetSpriteSize(Vector2 size) { mSpriteSize = size; }
-		Vector2 GetSpriteSize() { return mSpriteSize; }
-
+		void SetLayerType(eLayerType layerType) { mLayerType = layerType; }
+		eLayerType GetLayerType() { return mLayerType; }
 	private:
 		void initializeTransform();
 		void death() { mState = GameObject::eState::Dead; }
@@ -72,7 +71,7 @@ namespace wb
 	private:
 		std::vector<Component*> mComponents = {};
 		eState mState;
-		Vector2 mSpriteSize;
+		eLayerType mLayerType;
 	};
 
 	void Destroy(GameObject* gameObject);

@@ -1,210 +1,78 @@
 #include "BattleAtaho.h"
-#include "wbObject.h"
+#include "wbTexture.h"
 #include "wbAnimator.h"
-#include "wbInput.h"
-#include "wbAnimation.h"
-#include "..\\WBWBEngine_Window\\BattleManager.h"
-#include "BattleBase.h"
-#include "MoveBase.h"
-#include "Punch.h"
+#include "wbResources.h"
 
 namespace wb
 {
-	BattleAtaho::BattleAtaho()
-		:Component(eComponentType::BattleAtaho)
-		//, mState(State::Idle)
-		, atahoAnimator(nullptr)
-		, mBattleBase(nullptr)
+	BattleAtaho::BattleAtaho() : mAnimator(nullptr)
 	{
-		mBattleBase = new BattleBase();
-		Punch* move = new Punch(L"Punch",10,10,10);
-		moves.insert(std::make_pair(L"Punch", move));
+		Texture* atahoTex = Resources::Find<Texture>(L"BATTLE_AT");
+		mAnimator = AddComponent<Animator>();
 
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_IDLE");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_IDLE", atahoTex, Vector2(0.0f, 0.0f), Vector2(45.0f, 63.0f), Vector2::Zero, 1, 1.0f);
+
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_PUNCH");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_PUNCH", atahoTex, Vector2(0.0f, 0.0f), Vector2(67.5f, 61.0f), Vector2::Zero, 2, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_ROTATEKICK");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_ROTATEKICK", atahoTex, Vector2(0.0f, 0.0f), Vector2(70.0f, 101.0f), Vector2::Zero, 4, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_SLEEP");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_SLEEP", atahoTex, Vector2(0.0f, 0.0f), Vector2(62.0f, 49.0f), Vector2::Zero, 3, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_GUARD");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_GUARD", atahoTex, Vector2(0.0f, 0.0f), Vector2(48.0f, 64.0f), Vector2::Zero, 1, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_BEATTACKED");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_BEATTACKED", atahoTex, Vector2(0.0f, 0.0f), Vector2(45.0f, 65.0f), Vector2::Zero, 1, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_FLYINGKICK");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_FLYINGKICK", atahoTex, Vector2(0.0f, 0.0f), Vector2(68.0f, 65.0f), Vector2::Zero, 1, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_FAINTING");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_FAINTING", atahoTex, Vector2(0.0f, 0.0f), Vector2(100.0f, 81.0f), Vector2::Zero, 3, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_DRINKING");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_DRINKING", atahoTex, Vector2(0.0f, 0.0f), Vector2(75.0f, 95.0f), Vector2::Zero, 4, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_DRUNKSTATE");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_DRUNKSTATE", atahoTex, Vector2(0.0f, 0.0f), Vector2(50.0f, 66.0f), Vector2::Zero, 1, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_WIN");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_WIN", atahoTex, Vector2(0.0f, 0.0f), Vector2(69.2f, 186.0f), Vector2::Zero, 13, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_LEGKICK");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_LEGKICK", atahoTex, Vector2(0.0f, 0.0f), Vector2(61.0f, 66.0f), Vector2::Zero, 2, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_ROAR");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_ROAR", atahoTex, Vector2(0.0f, 0.0f), Vector2(100.0f, 144.0f), Vector2::Zero, 4, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_HOGYUKGWON");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_HOGYUKGWON", atahoTex, Vector2(0.0f, 0.0f), Vector2(58.0f, 64.0f), Vector2::Zero, 4, 1.0f);
+
+		atahoTex = Resources::Find<Texture>(L"ATAHO_BATTLE_HOPOGWON");
+		mAnimator->CreateAnimation(L"ATAHO_BATTLE_HOPOGWON", atahoTex, Vector2(0.0f, 0.0f), Vector2(80.0f, 91.0f), Vector2::Zero, 3, 1.0f);
 	}
 	BattleAtaho::~BattleAtaho()
 	{
 	}
 	void BattleAtaho::Initialize()
 	{
+		GameObject::Initialize();
 	}
 	void BattleAtaho::Update()
 	{
-		
-		/*if (!atahoAnimator)
-			atahoAnimator = GetOwner()->GetComponent<Animator>();
-
-		switch (mState)
-		{
-		case State::Idle:
-			idle();
-			break;
-		case State::Punch:
-			punch();
-			break;
-		case State::RotateKick:
-			rotateKick();
-			break;
-		case State::Defense:
-			defense();
-			break;
-		case State::Drinking:
-			drinking();
-			break;
-		case State::Sleep:
-			sleep();
-			break;
-		case State::Guard:
-			guard();
-			break;
-		case State::BeAttacked:
-			beAttacked();
-			break;
-		case State::FlyingKick:
-			flyingKick();
-			break;
-		case State::Fainting:
-			fainting();
-			break;
-		case State::Win:
-			win();
-			break;
-		case State::LegKick:
-			legKick();
-			break;
-		case State::Roar:
-			roar();
-			break;
-		case State::HogyukGwon:
-			hogyukGwon();
-			break;
-		case State::HopoGwon:
-			hopoGwon();
-			break;
-
-		}*/
+		GameObject::Update();
 	}
 	void BattleAtaho::LateUpdate()
 	{
-		
+		GameObject::LateUpdate();
 	}
 	void BattleAtaho::Render(HDC hdc)
 	{
+		GameObject::Render(hdc);
 	}
-	void BattleAtaho::idle()
-	{
-	/*	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_IDLE",false);
-
-		Animation* anim = atahoAnimator->GetActiveAnimation();
-
-		bool temp = anim->IsComplete();
-		
-
-		if (Input::GetKeyDown(eKeycode::Q))
-				mState = State::Punch;
-		else if (Input::GetKeyDown(eKeycode::W))
-				mState = State::RotateKick;
-		else if (Input::GetKeyDown(eKeycode::E))
-			mState = State::Defense;
-		else if (Input::GetKeyDown(eKeycode::R))
-			mState = State::Drinking;
-		else if(Input::GetKeyDown(eKeycode::T))
-			mState = State::Sleep;
-		else if (Input::GetKeyDown(eKeycode::Y))
-			mState = State::Guard;
-		else if (Input::GetKeyDown(eKeycode::U))
-			mState = State::BeAttacked;
-		else if (Input::GetKeyDown(eKeycode::I))
-			mState = State::FlyingKick;
-		else if (Input::GetKeyDown(eKeycode::O))
-			mState = State::Fainting;
-		else if (Input::GetKeyDown(eKeycode::P))
-			mState = State::Win;
-		else if (Input::GetKeyDown(eKeycode::A))
-			mState = State::LegKick;
-		else if (Input::GetKeyDown(eKeycode::S))
-			mState = State::Roar;
-		else if (Input::GetKeyDown(eKeycode::D))
-			mState = State::HogyukGwon;
-		else if (Input::GetKeyDown(eKeycode::F))
-			mState = State::HopoGwon;*/
-	}
-	//void BattleAtaho::punch()
-	//{
-	//	
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_PUNCH", false);
-
-	//	Animation* anim = atahoAnimator->GetActiveAnimation();
-	//	
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::rotateKick()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROTATEKICK",false);
-	//	
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::defense()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::drinking()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_DRINKING", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::sleep()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_SLEEP", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::guard()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_GUARD", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::beAttacked()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_BEATTACKED", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::flyingKick()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FLYINGKICK", false);
-	//	mState = State::Idle;
-
-	//}
-	//void BattleAtaho::fainting()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_FAINTING", true);
-	//	//mState = State::Idle;
-
-	//}
-	//void BattleAtaho::win()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_WIN", false);
-	//	mState = State::Idle;
-
-	//}
-	//void BattleAtaho::legKick()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_LEGKICK", false);
-	//	mState = State::Idle;
-
-	//}
-	//void BattleAtaho::roar()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_ROAR", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::hogyukGwon()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOGYUKGWON", false);
-	//	mState = State::Idle;
-	//}
-	//void BattleAtaho::hopoGwon()
-	//{
-	//	atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_HOPOGWON", false);
-	//	mState = State::Idle;
-	//}
 }

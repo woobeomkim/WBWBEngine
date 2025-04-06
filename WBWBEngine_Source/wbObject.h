@@ -12,6 +12,7 @@ namespace wb
 	static T* Instantiate(wb::eLayerType type)
 	{
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -23,6 +24,7 @@ namespace wb
 	static T* Instantiate(wb::eLayerType type,wb::Vector2 position)
 	{
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetActiveScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -33,4 +35,12 @@ namespace wb
 		return gameObject;
 	}
 
+	static void DontDestroyOnLoad(GameObject* gameObject)
+	{
+		Scene* activeScene = SceneManager::GetActiveScene();
+		activeScene->EraseGameObject(gameObject);
+
+		Scene* dontDestroyOnLoadScene = SceneManager::GetDontDestroyOnLoadScene();
+		dontDestroyOnLoadScene->AddGameObject(gameObject, gameObject->GetLayerType());
+	}
 }

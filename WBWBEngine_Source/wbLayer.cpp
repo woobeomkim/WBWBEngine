@@ -66,7 +66,7 @@ namespace wb
 	{
 		std::vector<GameObject*> deleteObjects;
 		findDeadGameObjects(deleteObjects);
-		eraseGameObject();
+		eraseDeadGameObject();
 		deleteGameObjects(deleteObjects);
 	}
 
@@ -76,6 +76,15 @@ namespace wb
 			return;
 		mGameObjects.push_back(gameObject);
 	}
+	void Layer::EraseGameObject(GameObject* eraseObject)
+	{
+		std::erase_if(mGameObjects,
+			[=](GameObject* gameObj)
+			{
+				return gameObj == eraseObject;
+			});
+	}
+
 	void Layer::findDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
 	{
 		for (GameObject* gameObj : mGameObjects)
@@ -93,7 +102,7 @@ namespace wb
 			gameObj = nullptr;
 		}
 	}
-	void Layer::eraseGameObject()
+	void Layer::eraseDeadGameObject()
 	{
 		std::erase_if(mGameObjects,
 			[](GameObject* gameObj)

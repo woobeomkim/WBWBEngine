@@ -1,10 +1,12 @@
 #include "wbSceneManager.h"
 #include "wbScene.h"
+#include "wbDontDestroyOnLoad.h"
 
 namespace wb
 {
 	std::map<const std::wstring, Scene*> SceneManager::mScene = {};
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mDontDestroyOnLoadScene = nullptr;
 
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
@@ -31,24 +33,29 @@ namespace wb
 	}
 	void SceneManager::Initialize()
 	{
+		mDontDestroyOnLoadScene = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
 		mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
+		mDontDestroyOnLoadScene->Update();
 	}
 	void SceneManager::LateUpdate()
 	{
 		mActiveScene->LateUpdate();
+		mDontDestroyOnLoadScene->LateUpdate();
 	}
 	void SceneManager::Render(HDC hdc)
 	{
 		mActiveScene->Render(hdc);
+		mDontDestroyOnLoadScene->Render(hdc);
 	}
 
 	void SceneManager::Destroy()
 	{
 		mActiveScene->Destroy();
+		mDontDestroyOnLoadScene->Destroy();
 	}
 
 	void SceneManager::Release()

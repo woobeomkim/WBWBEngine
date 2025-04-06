@@ -1,21 +1,19 @@
 #pragma once
-#include "wbGameObject.h"
+#include "wbScene.h"
 namespace wb
 {
-	class Animator;
-
-	class BattleAtaho : public GameObject
+	class DontDestroyOnLoad : public Scene
 	{
 	public:
-		BattleAtaho();
-		~BattleAtaho();
+		DontDestroyOnLoad();
+		~DontDestroyOnLoad();
+
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-	private:
-		Animator* mAnimator;
+		void OnEnter() override;
+		void OnExit() override;
 	};
 }
-

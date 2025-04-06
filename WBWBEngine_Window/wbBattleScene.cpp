@@ -7,14 +7,14 @@
 #include "wbTexture.h"
 #include "wbResource.h"
 #include "wbResources.h"
+#include "BattleAtaho.h"
 #include "wbAnimation.h"
 #include "wbAnimator.h"
 #include "wbMonster.h"
 #include "..\\WBWBEngine_Window\\BattleAtaho.h"
-#include "..\\WBWBEngine_Window\\BattleRinshan.h"
-#include "..\\WBWBEngine_Window\\BattleSmisu.h"
 #include "BattleManager.h"
 #include "..\\WBWBEngine_Source\\wbTime.h"
+#include "wbInput.h"
 namespace wb
 {
 	BattleScene::BattleScene()
@@ -25,25 +25,6 @@ namespace wb
 	}
 	void BattleScene::Initialize()
 	{
-		
-
-		BattleManager::Initialize();
-		
-		BattleManager::mBattleState = BattleManager::BattleState::Start;
-		/*
-		* Resources::Load<Texture>(L"ATAHO_BATTLE_IDLE",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_IDLE.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_PUNCH",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_PUNCH.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_ROTATEKICK",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_ROTATEKICK.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_SLEEP",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_SLEEP.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_WIN",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_WIN.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_GAURD",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_GUARD.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_BEATTACKED",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_BEATTACKED.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_FLYINGKICK",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_FLYINGKICK.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_FAINTING",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_FAINTING.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_DRINKING",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_DRINKING.bmp");
-		Resources::Load<Texture>(L"ATAHO_BATTLE_DRUNKSTATE",L"..\\Resources\\Bmp\\Battle_modified\\ATAHO_STATE_DRUNK.bmp");
-		*/
-		
 		Scene::Initialize();
 	}
 	void BattleScene::Update()
@@ -56,6 +37,23 @@ namespace wb
 		////atahoAnimator->PlayAnimation(L"BATTLE_IDLE");
 		//Time::WaitForSeconds(1.0f);
 		//
+
+		if (Input::GetKeyDown(eKeycode::A))
+		{
+			Transform* mTr = mMonster1->GetComponent<Transform>();
+			Transform* aTr = mAtaho->GetComponent<Transform>();
+			Vector2 mPos = mTr->GetPosition();
+			Vector2 aPos = aTr->GetPosition();
+			
+			Vector2 targetPos = mPos - aPos;
+
+			targetPos += aPos;
+			aTr->SetPosition(Vector2(targetPos.x - 40.0f, targetPos.y));
+		
+			mAtaho->GetComponent<Animator>()->PlayAnimation(L"ATAHO_BATTLE_PUNCH", true);
+			mMonster1->GetComponent<Animator>()->PlayAnimation(L"MONKEY_BE_ATTACK", true);
+		}
+
 		Scene::Update();
 		BattleManager::Update();
 	}
@@ -69,7 +67,11 @@ namespace wb
 	}
 	void BattleScene::OnEnter()
 	{
+		mAtaho = Instantiate<BattleAtaho>(eLayerType::Player, Vector2(160.0f, 120.0f));
+		mAtaho->GetComponent<Animator>()->PlayAnimation(L"ATAHO_BATTLE_IDLE", true);
 
+		mMonster1 = Instantiate<Monster>(eLayerType::Player, Vector2(540.0f, 240.0f));
+		mMonster1->GetComponent<Animator>()->PlayAnimation(L"MONKEY_IDLE", true);
 	}
 	void BattleScene::OnExit()
 	{

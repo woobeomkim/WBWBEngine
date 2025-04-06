@@ -32,14 +32,14 @@ namespace wb
 			mPower = power;
 		}
 
-		void SetRange(int range)
+		void SetEntire(bool isEntire)
 		{
-			mRange = range;
+			mbEntire = isEntire;
 		}
 
-		int GetRange()
+		bool GetEnitre()
 		{
-			return mRange;
+			return mbEntire;
 		}
 
 		void SetAccuracy(int accuracy)
@@ -67,7 +67,7 @@ namespace wb
 		std::wstring mName;
 		int mCost;
 		int mPower;
-		int mRange;
+		bool mbEntire;
 		int mAccuracy;
 		int mPriority;
 

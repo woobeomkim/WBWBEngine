@@ -4,6 +4,8 @@
 namespace wb
 {
 	class Monster;
+	class BattleAtaho;
+
     class BattleScene  : public Scene
     {
 	public:
@@ -19,6 +21,9 @@ namespace wb
 		virtual void OnExit() override;
 
 	private:
-		
+		Monster* mMonster1;
+		Monster* mMonster2;
+		Monster* mMonster3;
+		BattleAtaho* mAtaho;
 	};
 }

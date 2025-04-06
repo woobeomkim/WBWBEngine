@@ -6,7 +6,7 @@ namespace wb
 		: mName(moveName)
 		, mPower(movePower)
 		, mCost(moveCost)
-		, mRange(moveRange)
+		
 	{
 	}
 	MoveBase::~MoveBase()
