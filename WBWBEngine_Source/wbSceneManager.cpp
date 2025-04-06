@@ -6,7 +6,19 @@ namespace wb
 {
 	std::map<const std::wstring, Scene*> SceneManager::mScene = {};
 	Scene* SceneManager::mActiveScene = nullptr;
-	Scene* SceneManager::mDontDestroyOnLoadScene = nullptr;
+	Scene* SceneManager::mDontDestroyOnLoad = nullptr;
+
+	std::vector<GameObject*> SceneManager::GetGameObjects(eLayerType layer)
+	{
+		std::vector<GameObject*> gameObjects
+			= mActiveScene->GetLayer(layer)->GetGameObjects();
+		std::vector<GameObject*> dontDestroyOnLoad
+			= mDontDestroyOnLoad->GetLayer(layer)->GetGameObjects();
+
+		gameObjects.insert(gameObjects.end(), dontDestroyOnLoad.begin(), dontDestroyOnLoad.end());
+
+		return gameObjects;
+	}
 
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
@@ -33,29 +45,29 @@ namespace wb
 	}
 	void SceneManager::Initialize()
 	{
-		mDontDestroyOnLoadScene = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
+		mDontDestroyOnLoad = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
 		mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
-		mDontDestroyOnLoadScene->Update();
+		mDontDestroyOnLoad->Update();
 	}
 	void SceneManager::LateUpdate()
 	{
 		mActiveScene->LateUpdate();
-		mDontDestroyOnLoadScene->LateUpdate();
+		mDontDestroyOnLoad->LateUpdate();
 	}
 	void SceneManager::Render(HDC hdc)
 	{
 		mActiveScene->Render(hdc);
-		mDontDestroyOnLoadScene->Render(hdc);
+		mDontDestroyOnLoad->Render(hdc);
 	}
 
 	void SceneManager::Destroy()
 	{
 		mActiveScene->Destroy();
-		mDontDestroyOnLoadScene->Destroy();
+		mDontDestroyOnLoad->Destroy();
 	}
 
 	void SceneManager::Release()

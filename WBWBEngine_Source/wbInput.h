@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 
-enum class eKeycode
+enum class eKeyCode
 {
 	Q,W,E,R,T,Y,U,I,O,P,
 	A,S,D,F,G,H,J,K,L,
@@ -26,7 +26,7 @@ namespace wb
 	public:
 		struct Key
 		{
-			eKeycode keycode;
+			eKeyCode keycode;
 			eKeyState state;
 			bool bPreesed;
 		};
@@ -37,12 +37,12 @@ namespace wb
 		static void Update();
 		static void LateUpdate();
 
-		static bool GetKey(eKeycode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Pressed; }
-		static bool GetKeyDown(eKeycode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Down; }
-		static bool GetKeyUp(eKeycode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Up; }
+		static bool GetKey(eKeyCode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Pressed; }
+		static bool GetKeyDown(eKeyCode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Down; }
+		static bool GetKeyUp(eKeyCode keycode) { return mKeys[(UINT)keycode].state == eKeyState::Up; }
 
 		static Vector2 GetMousePosition() { return mMousePosition; }
-		static bool isKeyDown(eKeycode code);
+		static bool isKeyDown(eKeyCode code);
 
 	private:
 		static void createKeys();

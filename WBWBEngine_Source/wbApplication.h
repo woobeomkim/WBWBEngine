@@ -9,6 +9,11 @@ namespace wb
 		Application();
 		~Application();
 
+		static Application& GetInstance()
+		{
+			static Application instance;
+			return instance;
+		}
 		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Update();
 		void Render();
@@ -17,8 +22,8 @@ namespace wb
 		void Destroy();
 		void Release();
 
-		UINT GetWidth() { return mWidth; }
-		UINT GetHeight() { return mHeight; }
+		__forceinline UINT GetWidth() { return mWidth; }
+		__forceinline UINT GetHeight() { return mHeight; }
 
 		HDC GetHdc() { return mHdc; }
 		HWND GetHwnd() { return mHwnd; }
@@ -38,4 +43,5 @@ namespace wb
 		UINT mWidth;
 		UINT mHeight;
 	};
+
 }

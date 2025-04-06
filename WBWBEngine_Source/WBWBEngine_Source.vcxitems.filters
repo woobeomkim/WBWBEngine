@@ -77,6 +77,7 @@
       <Filter>MainCamera</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)wbDontDestroyOnLoad.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)wbTilemapRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbScene.h">
@@ -164,6 +165,7 @@
       <Filter>MainCamera</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)wbDontDestroyOnLoad.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)wbTilemapRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">

@@ -7,8 +7,11 @@
 #include "..\\WBWBEngine_Source\\wbApplication.h"
 #include "..\\WBWBEngine_Source\\wbLoadScenes.h"
 #include "..\\WBWBEngine_Window\\wbLoadResources.h"
+#include "..\\WBWBEngine_Source\\wbResources.h"
+#include "..\\WBWBEngine_Source\\wbTexture.h"
 #include "..\\WBWBEngine_Source\\wbTime.h"
 
+#include "..\\WBWBEngine_Window\\wbToolScene.h"
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -16,15 +19,15 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 
-wb::Application app;
 
 ULONG_PTR gpToken; // Gdiplus 사용을 위한변수
 Gdiplus::GdiplusStartupInput gpsi;
 
 // 이 코드 모듈에 포함된 함수의 선언을 전달합니다:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    WndTileProc(HWND, UINT, WPARAM, LPARAM);
 //INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -40,7 +43,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_WBWBENGINE, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    MyRegisterClass(hInstance, L"TILEWINDOW", WndTileProc);
     
     // 애플리케이션 초기화를 수행합니다:
     if (!InitInstance (hInstance, nCmdShow))
@@ -66,12 +70,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            app.Run();
+            wb::Application::GetInstance().Run();
         }
     }
 
     Gdiplus::GdiplusShutdown(gpToken);
-    app.Release();
+    wb::Application::GetInstance().Release();
 
     return (int) msg.wParam;
 }
@@ -83,14 +87,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  용도: 창 클래스를 등록합니다.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance, const wchar_t* name, WNDPROC proc)
 {
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.style          = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc    = WndProc;
+    wcex.lpfnWndProc    = proc;
     wcex.cbClsExtra     = 0;
     wcex.cbWndExtra     = 0;
     wcex.hInstance      = hInstance;
@@ -98,7 +102,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
     wcex.lpszMenuName   = nullptr;
-    wcex.lpszClassName  = szWindowClass;
+    wcex.lpszClassName  = name;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -124,23 +128,36 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
        CW_USEDEFAULT, 0, width, height, nullptr, nullptr, hInstance, nullptr);
 
+   HWND ToolHwnd = CreateWindowW(L"TILEWINDOW", L"TileWindow", WS_OVERLAPPEDWINDOW,
+	   0, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
+   wb::Application::GetInstance().Initialize(hWnd, width, height);
    if (!hWnd)
    {
       return FALSE;
    }
 
    ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+   UpdateWindow(hWnd); 
+   
    
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, nullptr);
 
    srand((UINT)time(0));
    wb::LoadResources();
    wb::LoadScenes();
-   app.Initialize(hWnd, width, height);
 
 
+   wb::Texture* texture
+	   = wb::Resources::Find<wb::Texture>(L"MAP1");
+   RECT rect = { 0,0,texture->GetWidth(),texture->GetHeight() };
+   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+   UINT toolWidth = rect.right - rect.left;
+   UINT toolHeight = rect.bottom - rect.top;
+   SetWindowPos(ToolHwnd, nullptr, width+ 10, 0, toolWidth, toolHeight, 0);
+   ShowWindow(ToolHwnd, nCmdShow);
+   UpdateWindow(ToolHwnd);
    return TRUE;
 }
 
@@ -248,6 +265,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     }
     return 0;
 }
+
 
 //// 정보 대화 상자의 메시지 처리기입니다.
 //INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)

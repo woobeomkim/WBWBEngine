@@ -57,7 +57,7 @@ namespace wb
 		}
 		Scene::Update();
 		
-		if (Input::GetKeyDown(eKeycode::SPACE))
+		if (Input::GetKeyDown(eKeyCode::SPACE))
 		{
 			SceneManager::LoadScene(L"PlayScene");
 		}

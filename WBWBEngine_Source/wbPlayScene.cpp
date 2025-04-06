@@ -16,7 +16,8 @@
 #include "..\\WBWBEngine_Window\Ataho.h"
 #include "wbBoxCollider2D.h"
 #include "wbCollider.h"
-
+#include "..\\WBWBEngine_Window\\wbTile.h"
+#include "wbTilemapRenderer.h"
 namespace wb
 {
 	PlayScene::PlayScene()
@@ -29,6 +30,37 @@ namespace wb
 	}
 	void PlayScene::Initialize()
 	{
+		//FILE* pFile = nullptr;
+		//_wfopen_s(&pFile, L"..\\Resources\\test", L"rb");
+
+		//while (true)
+		//{
+		//	int idxX = 0;
+		//	int idxY = 0;
+
+		//	int posX = 0;
+		//	int posY = 0;
+
+
+		//	if (fread(&idxX, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&idxY, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&posX, sizeof(int), 1, pFile) == NULL)
+		//		break;
+		//	if (fread(&posY, sizeof(int), 1, pFile) == NULL)
+		//		break;
+
+		//	Tile* tile = Instantiate<Tile>(eLayerType::Tile, Vector2(posX, posY));
+		//	TilemapRenderer* tmr = tile->AddComponent<TilemapRenderer>();
+		//	tmr->SetTexture(Resources::Find<Texture>(L"MAP1"));
+		//	tmr->SetIndex(Vector2(idxX, idxY));
+
+		//	//mTiles.push_back(tile);
+		//}
+
+		//fclose(pFile);
+
 		Player* player = Instantiate<Player>(eLayerType::Player, Vector2(320.0f, 200.0f));
 		Texture* tex = Resources::Find<Texture>(L"PLAYER_AT");
 		Animator* animator = player->AddComponent<Animator>();
@@ -120,7 +152,7 @@ namespace wb
 	}
 	void PlayScene::LateUpdate()
 	{
-		if (Input::GetKey(eKeycode::B))
+		if (Input::GetKey(eKeyCode::B))
 			SceneManager::LoadScene(L"BattleScene");
 		Scene::LateUpdate();
 	}

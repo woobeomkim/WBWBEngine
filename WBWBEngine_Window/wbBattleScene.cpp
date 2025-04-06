@@ -38,7 +38,7 @@ namespace wb
 		//Time::WaitForSeconds(1.0f);
 		//
 
-		if (Input::GetKeyDown(eKeycode::A))
+		if (Input::GetKeyDown(eKeyCode::A))
 		{
 			Transform* mTr = mMonster1->GetComponent<Transform>();
 			Transform* aTr = mAtaho->GetComponent<Transform>();

@@ -63,25 +63,25 @@ namespace wb
     void PlayerScript::idle()
     {
 
-        if (Input::GetKey(eKeycode::Left))
+        if (Input::GetKey(eKeyCode::Left))
         {
             mState = eState::Walk;
             mDir = eDir::Left;
             mAnimator->PlayAnimation(L"LEFTWALK", true);
         }
-        else if (Input::GetKey(eKeycode::Right))
+        else if (Input::GetKey(eKeyCode::Right))
         {
             mState = eState::Walk;
             mDir = eDir::Right;
             mAnimator->PlayAnimation(L"RIGHTWALK", true);
         }
-        else if (Input::GetKey(eKeycode::Up))
+        else if (Input::GetKey(eKeyCode::Up))
         {
             mState = eState::Walk;
             mDir = eDir::Up;
             mAnimator->PlayAnimation(L"UPWALK", true);
         }
-        else if (Input::GetKey(eKeycode::Down))
+        else if (Input::GetKey(eKeyCode::Down))
         {
             mState = eState::Walk;
             mDir = eDir::Down;
@@ -100,25 +100,25 @@ namespace wb
         float newX = pos.x;
 		float newY = pos.y;
 		moveDeltaTime = Time::DeltaTime();
-        if(Input::GetKey(eKeycode::Left))
+        if(Input::GetKey(eKeyCode::Left))
 		{
 			mDir = eDir::Left;
 			newX -= mSpeed * moveDeltaTime;
 			mIsMoving = true;
 		}
-		else if (Input::GetKey(eKeycode::Right))
+		else if (Input::GetKey(eKeyCode::Right))
 		{
 			mDir = eDir::Right;
 			newX += mSpeed * moveDeltaTime;
 			mIsMoving = true;
 		}
-		else if (Input::GetKey(eKeycode::Up))
+		else if (Input::GetKey(eKeyCode::Up))
 		{
 			mDir = eDir::Up;
 			newY -= mSpeed * moveDeltaTime;
 			mIsMoving = true;
 		}
-		else if (Input::GetKey(eKeycode::Down))
+		else if (Input::GetKey(eKeyCode::Down))
 		{
 			mDir = eDir::Down;
 			newY += mSpeed * moveDeltaTime;

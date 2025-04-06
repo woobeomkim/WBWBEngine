@@ -32,11 +32,14 @@
     <ClCompile Include="RinShan.cpp" />
     <ClCompile Include="Smisu.cpp" />
     <ClCompile Include="wbBattleScene.cpp" />
+    <ClCompile Include="wbCameraScript.cpp" />
     <ClCompile Include="wbEndingScene.cpp" />
     <ClCompile Include="wbLoadingScene.cpp" />
     <ClCompile Include="wbPlayerScript.cpp" />
     <ClCompile Include="wbRect.cpp" />
     <ClCompile Include="wbStudyScene.cpp" />
+    <ClCompile Include="wbTile.cpp" />
+    <ClCompile Include="wbToolScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbLoadScenes.h" />
@@ -53,12 +56,15 @@
     <ClInclude Include="RinShan.h" />
     <ClInclude Include="Smisu.h" />
     <ClInclude Include="wbBattleScene.h" />
+    <ClInclude Include="wbCameraScript.h" />
     <ClInclude Include="wbEndingScene.h" />
     <ClInclude Include="wbLoadingScene.h" />
     <ClInclude Include="wbLoadResources.h" />
     <ClInclude Include="wbPlayerScript.h" />
     <ClInclude Include="wbRect.h" />
     <ClInclude Include="wbStudyScene.h" />
+    <ClInclude Include="wbTile.h" />
+    <ClInclude Include="wbToolScene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

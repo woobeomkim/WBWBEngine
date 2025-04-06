@@ -4,7 +4,6 @@
 std::vector<wb::Input::Key> wb::Input::mKeys = {};
 wb::Vector2 wb::Input::mMousePosition = wb::Vector2::One;
 
-extern wb::Application app;
 
 int ASCII[] =
 {
@@ -40,10 +39,10 @@ namespace wb
 	}
 	void Input::createKeys()
 	{
-		for (int i = 0; i < (UINT)eKeycode::END; i++)
+		for (int i = 0; i < (UINT)eKeyCode::END; i++)
 		{
 			Key key;
-			key.keycode = (eKeycode)i;
+			key.keycode = (eKeyCode)i;
 			key.state = eKeyState::None;
 			key.bPreesed = false;
 			mKeys.push_back(key);
@@ -73,7 +72,7 @@ namespace wb
 			clearKeys();
 		}
 	}
-	bool Input::isKeyDown(eKeycode code)
+	bool Input::isKeyDown(eKeyCode code)
 	{
 		return GetAsyncKeyState(ASCII[(UINT)code]) & 0x8000;
 	}
@@ -99,10 +98,20 @@ namespace wb
 	{
 		POINT mousePos = {};
 		GetCursorPos(&mousePos);
-		ScreenToClient(app.GetHwnd(), &mousePos);
+		ScreenToClient(wb::Application::GetInstance().GetHwnd(), &mousePos);
 
-		mMousePosition.x = mousePos.x;
-		mMousePosition.y = mousePos.y;
+		UINT width = wb::Application::GetInstance().GetWidth();
+		UINT height = wb::Application::GetInstance().GetHeight();
+
+		mMousePosition.x = -1.0f;
+		mMousePosition.y = -1.0f;
+
+		if (mousePos.x > 0 && mousePos.x < width)
+			mMousePosition.x = (float)mousePos.x;
+
+		if (mousePos.y > 0 && mousePos.y < height)
+			mMousePosition.y = (float)mousePos.y;
+		
 	}
 
 	void Input::clearKeys()

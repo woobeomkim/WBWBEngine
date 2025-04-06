@@ -39,6 +39,11 @@ namespace wb
 		Resources::Load<Texture>(L"ATAHO_BATTLE_HOGYUKGWON",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_HOGYUKGWON.bmp");
 		Resources::Load<Texture>(L"ATAHO_BATTLE_HOPOGWON",L"..\\Resources\\Bmp\\Battle_modified\\Ataho\\ATAHO_HOPOGWON.bmp");
 		
+		//Tile
+
+		Resources::Load<Texture>(L"MAP1",L"..\\Resources\\Bmp\\map\\map_a1.bmp");
+
+
 		//Resources::Load<Texture>(L"PLAYER1_IDLE", L"..\\Resources\\Bmp\\AnimationSheet\\cara_at_idle.bmp");
 	}
 }

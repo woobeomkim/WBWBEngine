@@ -84,6 +84,9 @@
     <ClCompile Include="BattleAtaho.cpp">
       <Filter>BattleScene\Player</Filter>
     </ClCompile>
+    <ClCompile Include="wbTile.cpp" />
+    <ClCompile Include="wbToolScene.cpp" />
+    <ClCompile Include="wbCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\WBWBEngine_Source\wbPlayScene.h">
@@ -136,5 +139,8 @@
     <ClInclude Include="BattleAtaho.h">
       <Filter>BattleScene\Player</Filter>
     </ClInclude>
+    <ClInclude Include="wbTile.h" />
+    <ClInclude Include="wbToolScene.h" />
+    <ClInclude Include="wbCameraScript.h" />
   </ItemGroup>
 </Project>

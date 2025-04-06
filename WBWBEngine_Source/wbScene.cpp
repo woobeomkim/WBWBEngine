@@ -1,6 +1,7 @@
 #include "wbScene.h"
 #include "wbGameObject.h"
 #include "wbApplication.h"
+#include "wbCollisionManager.h"
 
 namespace wb
 {
@@ -79,6 +80,7 @@ namespace wb
 
 	void Scene::OnExit()
 	{
+		CollisionManager::Clear();
 	}
 
 	void Scene::AddGameObject(GameObject* obj, const eLayerType type)

@@ -81,25 +81,25 @@ namespace wb
 	}
 	void BattleManager::actionSelection()
 	{
-		if (Input::GetKeyDown(eKeycode::Right))
+		if (Input::GetKeyDown(eKeyCode::Right))
 			currentAction++;
-		else if (Input::GetKeyDown(eKeycode::Left))
+		else if (Input::GetKeyDown(eKeyCode::Left))
 			currentAction--;
 
 
-		if(Input::GetKeyDown(eKeycode::Z))
+		if(Input::GetKeyDown(eKeyCode::Z))
 			mBattleState = BattleState::MoveSelection;
 	}
 	void BattleManager::moveSelection()
 	{
-		if (Input::GetKeyDown(eKeycode::Down))
+		if (Input::GetKeyDown(eKeyCode::Down))
 			currentMove++;
-		else if (Input::GetKeyDown(eKeycode::Up))
+		else if (Input::GetKeyDown(eKeyCode::Up))
 			currentMove--;
 
-		if(Input::GetKeyDown(eKeycode::Z))
+		if(Input::GetKeyDown(eKeyCode::Z))
 			mBattleState = BattleState::RunningTurn;
-		else if(Input::GetKeyDown(eKeycode::X))
+		else if(Input::GetKeyDown(eKeyCode::X))
 			mBattleState = BattleState::ActionSelection;
 
 	}
@@ -110,7 +110,7 @@ namespace wb
 		atahoAnimator->PlayAnimation(L"ATAHO_BATTLE_IDLE",false);
 
 			enemyMove();
-			if(Input::GetKeyDown(eKeycode::Z))
+			if(Input::GetKeyDown(eKeyCode::Z))
 			mBattleState = BattleState::Start;
 		
 	}

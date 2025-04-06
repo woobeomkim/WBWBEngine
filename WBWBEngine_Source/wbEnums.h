@@ -14,6 +14,7 @@ namespace wb
 	{
 		None,
 		BackGround,
+		Tile,
 		Player,
 		Particle,
 		Max = 16,

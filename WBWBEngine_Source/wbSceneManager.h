@@ -23,7 +23,8 @@ namespace wb
 		}
 		static class Scene* LoadScene(const std::wstring& name);
 		static Scene* GetActiveScene() { return mActiveScene; }
-		static Scene* GetDontDestroyOnLoadScene() { return mDontDestroyOnLoadScene; }
+		static Scene* GetDontDestroyOnLoadScene() { return mDontDestroyOnLoad; }
+		static std::vector<GameObject*> GetGameObjects(eLayerType layer);
 
 		SceneManager();
 		~SceneManager();
@@ -38,6 +39,6 @@ namespace wb
 	private:
 		static std::map<const std::wstring, class Scene*> mScene;
 		static class Scene* mActiveScene;
-		static class Scene* mDontDestroyOnLoadScene;
+		static class Scene* mDontDestroyOnLoad;
 	};
 }

@@ -2,7 +2,6 @@
 #include "wbApplication.h"
 #include "wbResources.h"
 
-extern wb::Application app;
 
 namespace wb
 {
@@ -26,8 +25,8 @@ namespace wb
 		image->SetWidth(width);
 		image->SetHeight(height);
 
-		HDC hdc = app.GetHdc();
-		HWND hwnd = app.GetHwnd();
+		HDC hdc = wb::Application::GetInstance().GetHdc();
+		HWND hwnd = wb::Application::GetInstance().GetHwnd();
 
 		image->mBitmap = CreateCompatibleBitmap(hdc, width, height);
 		image->mHdc = CreateCompatibleDC(hdc);
@@ -63,7 +62,7 @@ namespace wb
 			else if (info.bmBitsPixel == 24)
 				mbAlpha = false;
 
-			HDC mainDC = app.GetHdc();
+			HDC mainDC = wb::Application::GetInstance().GetHdc();
 			mHdc = CreateCompatibleDC(mainDC);
 
 			HBITMAP oldBitmap = (HBITMAP)SelectObject(mHdc, mBitmap);

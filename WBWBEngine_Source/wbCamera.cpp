@@ -5,7 +5,6 @@
 
 namespace wb
 {
-	extern Application app;
 
 	Camera::Camera()
 		: Component(eComponentType::Camera)
@@ -20,8 +19,8 @@ namespace wb
 	}
 	void Camera::Initialize()
 	{
-		mResolution.x = app.GetWidth();
-		mResolution.y = app.GetHeight();
+		mResolution.x =  wb::Application::GetInstance().GetWidth();
+		mResolution.y =  wb::Application::GetInstance().GetHeight();
 	}
 	void Camera::Update()
 	{

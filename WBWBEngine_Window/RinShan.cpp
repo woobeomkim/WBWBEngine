@@ -79,25 +79,25 @@ namespace wb
 	}
 	void RinShan::idle()
 	{
-		if (Input::GetKey(eKeycode::Left))
+		if (Input::GetKey(eKeyCode::Left))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Left;
 			mAnimator->PlayAnimation(L"LEFTWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::Right))
+		else if (Input::GetKey(eKeyCode::Right))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Right;
 			mAnimator->PlayAnimation(L"RIGHTWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::Up))
+		else if (Input::GetKey(eKeyCode::Up))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Up;
 			mAnimator->PlayAnimation(L"UPWALK", true);
 		}
-		else if (Input::GetKey(eKeycode::Down))
+		else if (Input::GetKey(eKeyCode::Down))
 		{
 			mState = eState::Walk;
 			mDir = eDir::Down;
@@ -113,7 +113,7 @@ namespace wb
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
-		if (Input::GetKey(eKeycode::Left) || Input::GetKey(eKeycode::Right) || Input::GetKey(eKeycode::Up) || Input::GetKey(eKeycode::Down)) mIsMoving = true;
+		if (Input::GetKey(eKeyCode::Left) || Input::GetKey(eKeyCode::Right) || Input::GetKey(eKeyCode::Up) || Input::GetKey(eKeyCode::Down)) mIsMoving = true;
 		else mIsMoving = false;
 		if (mIsMoving)
 		{

@@ -2,7 +2,6 @@
 #include "wbApplication.h"
 #include "wbMonster.h"
 
-extern wb::Application app;
 
 namespace wb
 {
